@@ -1,22 +1,7 @@
 """
 exp2_condC_72b.py — Exp 2 Cond C (Oracle Summary) on Qwen2.5-72B via API.
-========================================================================
-
-72B Layer-2 run: accuracy + automatic SSC (Section 5.0.4 / 5.2.4 / 5.2.7).
-No Turn 1 — the verdict table is constructed deterministically from StatQA
-ground truth, then the SAME Turn 2 as Cond A selects from it.
-
-This is the key cross-capacity evidence: comparing Cond C SSC/accuracy across
-7B / 14B / 72B tells us whether the disconnect has a capacity threshold.
 
 Sample set: shared S50 (same questions as 14B Cond C).
-
-Usage
------
-    export DASHSCOPE_API_KEY=sk-xxxx
-    python exp2_condC_72b.py --dry-run
-    python exp2_condC_72b.py                 # oracle -> Turn2 -> metrics
-    python exp2_condC_72b.py --stage metrics # re-run metrics only
 """
 
 from __future__ import annotations
@@ -32,9 +17,7 @@ import api_client
 from classification_list import CLASSIFICATION_LIST, candidates_for_task
 from data_loader import load_s50
 
-# --------------------------------------------------------------------------- #
 # Config
-# --------------------------------------------------------------------------- #
 PROJECT_ROOT = Path(__file__).resolve().parent
 S50_CSV = PROJECT_ROOT / "qwen2_5_14b_zero-shot-CoT_50_with_AE_component.csv"
 OUTPUT_DIR = PROJECT_ROOT / "outputs"
@@ -49,7 +32,7 @@ HIGH_FREQ = [
     "Anderson-Darling Test", "Fisher Exact Test", "Mantel-Haenszel Test",
     "Pearson Correlation Coefficient", "Bartlett Test", "F-Test for Variance",
 ]
-# 12 judgement-robust methods (generalisation-test group, Section 5.2.5.1).
+# 12 judgement-robust methods.
 ROBUST_OTHER = [
     "Partial Correlation Coefficient", "Chi-square Independence Test",
     "Kolmogorov-Smirnov Test for Normality",
@@ -60,7 +43,7 @@ ROBUST_OTHER = [
     "Range", "Quartile", "Mode",
 ]
 
-# Same Turn 2 prompt as Cond A (Section 5.2.1.1 requires identical Turn 2).
+# Same Turn 2 prompt as Cond A.
 TURN2_SYSTEM = (
     "You are a careful statistical assistant making a final method selection "
     "based strictly on a provided applicability table. You do not re-evaluate."
@@ -87,9 +70,7 @@ Rules:
 Output only the JSON object."""
 
 
-# --------------------------------------------------------------------------- #
 # Stage 1: construct oracle (no API)
-# --------------------------------------------------------------------------- #
 def construct_oracle():
     samples = load_s50(S50_CSV)
     n_ok = n_err = 0
@@ -116,9 +97,7 @@ def construct_oracle():
     print(f"Oracle built: {n_ok}/{len(samples)}  (ill-defined: {n_err})")
 
 
-# --------------------------------------------------------------------------- #
 # Stage 2: Turn 2
-# --------------------------------------------------------------------------- #
 def render_table(verdict_map):
     return "\n".join(f"- {m}: {v}" for m, v in verdict_map.items())
 
@@ -153,9 +132,7 @@ def run_turn2(dry_run=False):
                          max_tokens=TURN2_MAX_TOKENS)
 
 
-# --------------------------------------------------------------------------- #
 # Stage 3: metrics
-# --------------------------------------------------------------------------- #
 def parse_selection(response: str):
     if not response.strip():
         return set()
@@ -286,9 +263,7 @@ def _report(rows, pool):
     print("=" * 72)
 
 
-# --------------------------------------------------------------------------- #
 # Main
-# --------------------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")

@@ -1,16 +1,8 @@
 """
 Classification list + task-category candidate sets for StatQA.
-==============================================================
-
-The 27 methods grouped by task category. Section 5.2.2 requires that the
-Step-4 candidate set for a question be exactly the methods of its task
-category — and that these members match the 5.1 classification exactly.
-
-TASK_CANDIDATES is the single source of truth for pruning: given a task
-category string, it returns the candidate methods Step 4 evaluates.
 """
 
-# --- Per-category method lists (members identical to Exp 1's 27-method list) -
+# --- Per-category method lists 
 CORRELATION_ANALYSIS = [
     "Pearson Correlation Coefficient",
     "Spearman Correlation Coefficient",
@@ -63,8 +55,7 @@ CLASSIFICATION_LIST = (
 )
 assert len(CLASSIFICATION_LIST) == 27, len(CLASSIFICATION_LIST)
 
-# --- Task category -> candidate methods -------------------------------------
-# Keys are the exact task strings used in the StatQA CSV `task` column.
+#Task category  
 TASK_CANDIDATES = {
     "Correlation Analysis": CORRELATION_ANALYSIS,
     "Distribution Compliance Test": DISTRIBUTION_COMPLIANCE_TEST,
@@ -73,7 +64,7 @@ TASK_CANDIDATES = {
     "Variance Test": VARIANCE_TEST,
 }
 
-# Candidate-set sizes documented in 5.2.2: CA 4, CTT 3, VT 4, DCT 8, DS 8.
+# Candidate-set sizes documented in 5.2.2
 _EXPECTED_SIZES = {
     "Correlation Analysis": 4,
     "Distribution Compliance Test": 8,
@@ -88,7 +79,7 @@ for _task, _methods in TASK_CANDIDATES.items():
     )
 
 
-# --- Helpers ----------------------------------------------------------------
+# Helpers 
 # Map any method name to its task category (for Step-3 correctness checks).
 METHOD_TO_TASK = {}
 for _task, _methods in TASK_CANDIDATES.items():

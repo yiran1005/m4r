@@ -1,22 +1,8 @@
 """
 exp1_part2_72b.py — Exp 1 Part 2 (Instance Judgement) on Qwen2.5-72B via API.
-============================================================================
-
-72B Layer-2 run: J1 automatic evaluation only, no human annotation
-(Section 5.0.4 / 5.1.3). Runs all 50 questions x 27 methods = 1350 judgement
-queries through DashScope, parses each verdict, and reports J1 accuracy
-(overall, per task, per method) for cross-capacity comparison with 14B.
 
 Sample set: the shared zero-shot-CoT S50 (same questions as 14B), so the
 14B-vs-72B J1 comparison is on identical items.
-
-Usage
------
-    export DASHSCOPE_API_KEY=sk-xxxx
-    python api_client.py          # smoke-test the API first
-    python exp1_part2_72b.py --dry-run
-    python exp1_part2_72b.py            # full run (resumable)
-    python exp1_part2_72b.py --eval-only   # re-run evaluation on existing output
 """
 
 from __future__ import annotations
@@ -32,9 +18,8 @@ import api_client
 from classification_list import CLASSIFICATION_LIST
 from data_loader import load_s50
 
-# --------------------------------------------------------------------------- #
 # Config
-# --------------------------------------------------------------------------- #
+
 PROJECT_ROOT = Path(__file__).resolve().parent
 S50_CSV = PROJECT_ROOT / "qwen2_5_14b_zero-shot-CoT_50_with_AE_component.csv"
 OUTPUT_DIR = PROJECT_ROOT / "outputs"
@@ -48,9 +33,8 @@ HIGH_FREQ = [
     "Pearson Correlation Coefficient", "Bartlett Test", "F-Test for Variance",
 ]
 
-# --------------------------------------------------------------------------- #
+
 # Prompt (identical to the 14B Part 2 template)
-# --------------------------------------------------------------------------- #
 SYSTEM_MSG = (
     "You are a careful assistant that evaluates the applicability of "
     "statistical methods given concrete data features. Be precise. "
@@ -92,9 +76,8 @@ def make_record(task: dict, text: str, error: str | None) -> dict:
     }
 
 
-# --------------------------------------------------------------------------- #
+
 # Verdict parsing (same precedence ladder as 14B: NOT before APPLICABLE)
-# --------------------------------------------------------------------------- #
 NOT_RE = [re.compile(p, re.I) for p in [
     r"\bNOT\s+APPLICABLE\b", r"\bNOT\s+APPROPRIATE\b", r"\bis\s+not\s+applicable\b",
     r"\bcannot\s+be\s+(?:applied|used)\b", r"\bshould\s+not\s+be\s+(?:applied|used)\b",
@@ -125,9 +108,8 @@ def parse_verdict(response: str) -> str:
     return "PARSE_ERROR"
 
 
-# --------------------------------------------------------------------------- #
+
 # Build tasks
-# --------------------------------------------------------------------------- #
 def build_tasks() -> list[dict]:
     samples = load_s50(S50_CSV)
     tasks = []
@@ -145,9 +127,8 @@ def build_tasks() -> list[dict]:
     return tasks
 
 
-# --------------------------------------------------------------------------- #
+
 # J1 evaluation
-# --------------------------------------------------------------------------- #
 def evaluate() -> None:
     import csv
     records = []
@@ -213,9 +194,7 @@ def _report(records):
     print("=" * 70)
 
 
-# --------------------------------------------------------------------------- #
 # Main
-# --------------------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")

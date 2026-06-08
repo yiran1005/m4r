@@ -1,29 +1,7 @@
 """
 exp2_condA_72b.py — Exp 2 Cond A (Self-Summary) on Qwen2.5-72B via API.
-======================================================================
-
-72B Layer-2 run: accuracy + automatic SSC, no human SSC check
-(Section 5.0.4 / 5.2.1). Pipeline, all through DashScope:
-
-  Turn 1 (judgement) : closed-set Step-3 + per-method verdict JSON summary
-  parse              : extract JSON, Step-3 correctness, clean verdict table
-  Turn 2 (selection) : FRESH messages (context reset), select from the table
-  metrics            : SSC, Add/Drop rate, accuracy, summary size + recall
-
-Two-turn isolation: Turn 2 is built from a brand-new message list containing
-only the clean verdict table — no Turn 1 history — matching Section 5.2.1.1.
-With an API this isolation is automatic (each call is stateless), but we also
-persist Turn 1 to disk and feed only the distilled table into Turn 2.
 
 Sample set: shared S50 (same as 14B), so 14B-vs-72B is comparable.
-
-Usage
------
-    export DASHSCOPE_API_KEY=sk-xxxx
-    python exp2_condA_72b.py --dry-run
-    python exp2_condA_72b.py                 # full pipeline (resumable)
-    python exp2_condA_72b.py --stage turn2   # re-run only a later stage
-    python exp2_condA_72b.py --stage metrics
 """
 
 from __future__ import annotations
@@ -42,9 +20,7 @@ from classification_list import (
 )
 from data_loader import load_s50
 
-# --------------------------------------------------------------------------- #
 # Config
-# --------------------------------------------------------------------------- #
 PROJECT_ROOT = Path(__file__).resolve().parent
 S50_CSV = PROJECT_ROOT / "qwen2_5_14b_zero-shot-CoT_50_with_AE_component.csv"
 OUTPUT_DIR = PROJECT_ROOT / "outputs"
@@ -63,9 +39,8 @@ HIGH_FREQ = [
 CLASSIFICATION_LIST_STRING = ", ".join(CLASSIFICATION_LIST)
 TASK_OPTIONS_STRING = "\n   ".join(f"- {t}" for t in TASK_CANDIDATES)
 
-# --------------------------------------------------------------------------- #
+
 # Turn 1 prompt (closed-set Step 3, same as fixed 14B version)
-# --------------------------------------------------------------------------- #
 TURN1_SYSTEM = (
     "You are a careful statistical assistant. You solve problems in stages. "
     "In this stage you only produce an applicability summary as a JSON object; "
@@ -102,9 +77,8 @@ Output a JSON object with this exact structure:
 
 Use method names exactly as written in the classification list, and the task_type exactly as written in Step 2. Output only the JSON object."""
 
-# --------------------------------------------------------------------------- #
+
 # Turn 2 prompt (strict selection, fresh context)
-# --------------------------------------------------------------------------- #
 TURN2_SYSTEM = (
     "You are a careful statistical assistant making a final method selection "
     "based strictly on a provided applicability table. You do not re-evaluate."
@@ -131,9 +105,7 @@ Rules:
 Output only the JSON object."""
 
 
-# --------------------------------------------------------------------------- #
 # Stage 1: Turn 1
-# --------------------------------------------------------------------------- #
 def build_turn1_messages(task: dict) -> list[dict]:
     return [
         {"role": "system", "content": TURN1_SYSTEM},
@@ -173,9 +145,7 @@ def run_turn1(dry_run=False, limit_q=None):
                          max_tokens=TURN1_MAX_TOKENS)
 
 
-# --------------------------------------------------------------------------- #
 # Stage 2: parse Turn 1
-# --------------------------------------------------------------------------- #
 def extract_json(text: str):
     if not text:
         return None
@@ -267,9 +237,7 @@ def parse_turn1():
           f"{n_step3_err} Step-3 errors (excluded from main analysis)")
 
 
-# --------------------------------------------------------------------------- #
 # Stage 3: Turn 2 (fresh context)
-# --------------------------------------------------------------------------- #
 def render_table(verdict_map):
     return "\n".join(f"- {m}: {v}" for m, v in verdict_map.items())
 
@@ -304,9 +272,7 @@ def run_turn2(dry_run=False):
                          max_tokens=TURN2_MAX_TOKENS)
 
 
-# --------------------------------------------------------------------------- #
 # Stage 4: metrics
-# --------------------------------------------------------------------------- #
 def parse_selection(response: str):
     if not response.strip():
         return set()
@@ -402,9 +368,7 @@ def compute_metrics():
     print("=" * 70)
 
 
-# --------------------------------------------------------------------------- #
 # Main
-# --------------------------------------------------------------------------- #
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")

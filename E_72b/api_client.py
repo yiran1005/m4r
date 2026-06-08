@@ -1,22 +1,3 @@
-"""
-api_client.py — Shared DashScope (Qwen) API client for the 72B experiments.
-===========================================================================
-
-All three 72B experiments (Exp 1 Part 2, Exp 2 Cond A, Exp 2 Cond C) call the
-Qwen2.5-72B-Instruct model through Alibaba Cloud DashScope's OpenAI-compatible
-endpoint. This module centralises:
-
-  * client construction (base_url, api key from env)
-  * a single chat() call with retry + exponential backoff on transient errors
-  * concurrent batch execution with a bounded thread pool (rate-limit aware)
-  * resumable JSONL output keyed by a caller-supplied id
-
-
-
-Decoding matches the thesis protocol (Section 5.0.4): temperature=0, top_p=1.
-DashScope accepts these via the OpenAI-compatible params.
-"""
-
 from __future__ import annotations
 
 import json
@@ -28,26 +9,22 @@ from typing import Callable
 
 from openai import OpenAI
 
-# --------------------------------------------------------------------------- #
 # Configuration
-# --------------------------------------------------------------------------- #
 BASE_URL = os.environ.get(
     "DASHSCOPE_BASE_URL",
     "https://dashscope.aliyuncs.com/compatible-mode/v1",
 )
 MODEL = os.environ.get("QWEN_MODEL", "qwen2.5-72b-instruct")
 
-# Decoding (Section 5.0.4): deterministic.
+# Decoding : deterministic.
 TEMPERATURE = 0.0
 TOP_P = 1.0
 SEED = 42
 
-# Concurrency + retry. DashScope rate limits vary by account tier; 5 concurrent
-# requests is conservative. Lower MAX_WORKERS if you hit 429s frequently.
 MAX_WORKERS = 5
 MAX_RETRIES = 6
-BACKOFF_BASE = 2.0          # seconds; doubles each retry (2, 4, 8, ...)
-REQUEST_TIMEOUT = 120       # seconds per request
+BACKOFF_BASE = 2.0          
+REQUEST_TIMEOUT = 120      
 
 
 def get_client() -> OpenAI:
@@ -58,10 +35,7 @@ def get_client() -> OpenAI:
         )
     return OpenAI(api_key=api_key, base_url=BASE_URL, timeout=REQUEST_TIMEOUT)
 
-
-# --------------------------------------------------------------------------- #
 # Single call with retry
-# --------------------------------------------------------------------------- #
 def chat(client: OpenAI, messages: list[dict],
          max_tokens: int) -> tuple[str, str | None]:
     """One chat completion. Returns (text, error). On success error is None.
@@ -89,10 +63,7 @@ def chat(client: OpenAI, messages: list[dict],
                 time.sleep(sleep)
     return "", last_err
 
-
-# --------------------------------------------------------------------------- #
 # Resumable concurrent batch
-# --------------------------------------------------------------------------- #
 def load_done_ids(path: Path, id_field: str) -> set:
     """Return the set of ids already present in an output JSONL."""
     if not path.exists():
@@ -129,9 +100,7 @@ def run_batch(
     id_field      : key identifying a task uniquely (for resume + dedupe)
     max_tokens    : max_tokens for each call
 
-    Resumable: tasks whose id is already in output_path are skipped.
-    Results are written as they complete (append mode), so an interrupted run
-    loses nothing.
+    tasks whose id is already in output_path are skipped.
     """
     client = get_client()
     done = load_done_ids(output_path, id_field)
@@ -144,8 +113,6 @@ def run_batch(
 
     t_start = time.time()
     n_done = 0
-    # A lock-free append is unsafe across threads, so we collect results in the
-    # main thread as futures complete and write there.
     with output_path.open("a", encoding="utf-8") as fout:
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
             future_to_task = {}

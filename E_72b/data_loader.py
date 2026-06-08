@@ -1,9 +1,5 @@
 """
 data_loader.py — Load S50 and extract (question, column_info, ground_truth).
-============================================================================
-
-Self-contained version for the 72B API experiments: takes the CSV path as an
-argument instead of reading a global config.
 """
 
 from __future__ import annotations
