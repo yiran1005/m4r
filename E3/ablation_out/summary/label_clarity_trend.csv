@@ -1,5 +1,0 @@
-model,variant,ca_trend_z,ca_trend_p,groups
-14B,V0,-1.6288117852830455,0.10335286904838403,narrative_only>partially_labeled>fully_labeled
-14B,V1,-2.6552871696814484,0.007924091894397245,narrative_only>partially_labeled>fully_labeled
-14B,V2,-1.8221468591980272,0.06843270525543499,partially_labeled>fully_labeled
-14B,V3,-2.4489845445396794,0.014325959520308462,partially_labeled>fully_labeled
