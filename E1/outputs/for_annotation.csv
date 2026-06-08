@@ -1,0 +1,409 @@
+"method","response","D1_data_type","D2_sample_size","D3_assumptions","D4_exclusion","D5_discriminative","annotator_notes","run_idx","seed","model_id"
+"Pearson Correlation Coefficient","- **Required Data Types for Input Variables:**
+  - Both input variables must be continuous (interval or ratio level).
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is universally required, but generally, a sample size of at least 30 is recommended to ensure reliable estimates.
+
+- **Key Statistical Assumptions:**
+  - Linearity: The relationship between the two variables should be linear.
+  - Normality: Both variables should be normally distributed, especially in smaller samples.
+  - Homoscedasticity: The variance around the regression line is the same for all values of the predictor variable.
+  - Independence: Observations must be independent of each other.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the relationship between variables is non-linear.
+  - When data contains significant outliers that can skew results.
+  - When one or both variables are ordinal or nominal rather than continuous.
+  - When the assumption of normality is severely violated in small samples.
+  - When there is a clear violation of homoscedasticity.
+  - When observations are not independent (e.g., repeated measures without proper adjustments).","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Spearman Correlation Coefficient","- **Required Data Types for Input Variables:**
+  - Ordinal or continuous data.
+  - Can handle ranked or non-normally distributed data.
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size requirement.
+  - Generally, a larger sample size improves the reliability of the correlation coefficient.
+
+- **Key Statistical Assumptions:**
+  - Monotonic relationship between the variables.
+  - Observations are independent of each other.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the relationship between variables is not monotonic.
+  - For detecting linear relationships specifically, when Pearson's correlation might be more appropriate.
+  - When dealing with nominal data, where other measures like Cramér's V would be more suitable.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Kendall Correlation Coefficient","- **Required Data Types for Input Variables:**
+  - Ordinal or continuous data types.
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but smaller samples may reduce the power of the test to detect significant correlations.
+
+- **Key Statistical Assumptions:**
+  - Observations must be independent.
+  - There should be no outliers that heavily influence the results.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data contains a large number of tied ranks, as Kendall's tau can be less reliable in such cases.
+  - When the relationship between variables is nonlinear, as Kendall's correlation measures only monotonic relationships.
+  - When the primary interest is in detecting linear relationships, as other measures like Pearson's correlation might be more appropriate.
+  - When the sample size is extremely small, potentially leading to unreliable estimates.
+  - When the assumption of independence is violated, such as in time series data where observations are likely correlated over time.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Partial Correlation Coefficient","- **Required Data Types for Input Variables:**
+  - Continuous numerical data for all variables involved in the partial correlation calculation.
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is universally required, but generally, a larger sample size improves the reliability of the estimates. A common rule of thumb is to have at least 10 observations per variable being analyzed.
+
+- **Key Statistical Assumptions:**
+  - Linearity between the variables being considered.
+  - Normality of the residuals when partial correlations are derived from regression models.
+  - Independence of observations.
+  - Homoscedasticity (constant variance of errors).
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the relationship between variables is non-linear.
+  - When there is significant multicollinearity among the predictor variables.
+  - When the assumption of normality is severely violated and the sample size is small.
+  - When the data contains a high proportion of outliers or influential cases that could distort the results.
+  - When the assumption of independence of observations is violated (e.g., in time series data).","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Anderson-Darling Test","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but results may be unreliable with very small samples (typically less than 5). Generally, the test performs well with samples of at least 10 to 20 observations.
+
+- **Key Statistical Assumptions:**
+  - Independence of observations
+  - The specific distribution against which the data is being tested (e.g., normal, uniform, exponential)
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data contains significant outliers or heavy-tailed distributions, as these can distort the test's outcome.
+  - For discrete data, as the Anderson-Darling test is designed for continuous distributions.
+  - When the sample size is extremely small (less than 5), due to poor performance and unreliability of the test results.
+  - If the underlying distribution is unknown or cannot be specified accurately.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Shapiro-Wilk Test of Normality","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - Typically ranges from 3 to 5000 observations, with optimal power in the range of 5 to 100 samples.
+
+- **Key Statistical Assumptions:**
+  - Independence of observations
+  - The test assumes the data is a random sample
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the sample size is outside the recommended range (less than 3 or more than 5000)
+  - For heavily tied data (discrete data with many repeated values), as the Shapiro-Wilk test is designed for continuous data
+  - When the assumption of independence is violated
+  - For very small samples where the test may lack power to detect deviations from normality
+  - In cases where the data distribution is known to be non-normal and the test is not needed","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Kolmogorov-Smirnov Test for Normality","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but the test's power increases with larger samples. Generally, the test is considered reliable for sample sizes of at least 50.
+
+- **Key Statistical Assumptions:**
+  - Independence of observations
+  - The data should represent a random sample from the population
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the sample size is very small (less than 5), the test may lack sufficient power to detect deviations from normality.
+  - When the data contain significant outliers or heavy-tailed distributions, as the test is sensitive to these conditions.
+  - When the data are discrete or categorical, as the Kolmogorov-Smirnov test is designed for continuous distributions.
+  - When the underlying distribution is known to deviate significantly from normality, and an alternative goodness-of-fit test more suited to the specific distribution is available.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Lilliefors Test","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but results may be unreliable with very small samples (typically less than 50).
+
+- **Key Statistical Assumptions:**
+  - The data should be independent.
+  - The test assumes that the data come from a continuous distribution.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the sample size is extremely small (less than 50), as the test's accuracy and power may be compromised.
+  - When the data are not continuous or are heavily discrete, as the Lilliefors test is designed for continuous distributions.
+  - When the data do not meet the assumption of independence.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Kolmogorov-Smirnov Test","- **Required Data Type(s):**
+  - Continuous numerical data.
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but the test's power increases with larger samples. Small sample sizes may limit the test's ability to detect differences.
+
+- **Key Statistical Assumptions:**
+  - Independence of observations.
+  - The test does not assume normality or equal variances.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data contains ties (exact duplicates), especially in small samples, as it can affect the accuracy of the test.
+  - When the sample size is extremely small, as the test may lack sufficient power to detect meaningful differences.
+  - When the data is ordinal rather than continuous, although there is a version of the test for discrete distributions.
+  - When the underlying distribution is known to be significantly non-continuous (e.g., binary data).","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Kolmogorov-Smirnov Test for Uniform distribution","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but the test's power increases with larger samples.
+
+- **Key Statistical Assumptions:**
+  - The data must be independent and identically distributed (i.i.d.)
+  - The null hypothesis assumes that the data follows a uniform distribution over a specified interval
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data does not meet the assumption of being i.i.d.
+  - When the sample size is extremely small, as the test may lack sufficient power to detect deviations from the uniform distribution
+  - When the underlying distribution is known to deviate significantly from uniformity and such deviation is expected or desired
+  - When the data contains significant outliers or heavy-tailed distributions, as these can distort the results of the test","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Kolmogorov-Smirnov Test for Gamma distribution","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but larger samples generally provide more reliable results.
+
+- **Key Statistical Assumptions:**
+  - The data must follow a Gamma distribution with specified parameters.
+  - Observations should be independent of each other.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data does not come from a continuous distribution.
+  - When the data significantly deviates from the Gamma distribution shape and scale parameters being tested.
+  - When there is a lack of independence among observations.
+  - For very small sample sizes where the test may lack power to detect deviations from the Gamma distribution.
+  - If the goal is to compare two different distributions rather than testing against a specific Gamma distribution.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Kolmogorov-Smirnov Test for Exponential distribution","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but larger samples generally provide more reliable results.
+
+- **Key Statistical Assumptions:**
+  - The data must come from a complete sample (no censoring).
+  - Observations are independent of each other.
+  - The test assumes that the exponential distribution parameters (rate parameter) are known or estimated without bias.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data is not continuous.
+  - When there is significant censoring in the data.
+  - When the independence assumption between observations is violated.
+  - When the parameters of the exponential distribution are estimated from the same data set being tested, leading to an overly optimistic test result.
+  - For testing distributions other than the exponential distribution, as the KS test here is specifically tailored for the exponential distribution.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Chi-square Independence Test","- **Required Data Types for Input Variables:**
+  - Categorical data (nominal or ordinal)
+- **Sample Size Requirements (if any):**
+  - No strict minimum sample size requirement, but expected cell counts should generally be at least 5 in most cells to meet the asymptotic approximation of the chi-square distribution.
+- **Key Statistical Assumptions:**
+  - Observations must be independent of each other.
+  - Expected frequency count in each cell should ideally be 5 or more.
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data does not consist of categorical variables.
+  - When there is a significant lack of independence among observations.
+  - When expected frequencies in cells are less than 5, especially if many cells have low expected counts.
+  - When the sample size is too small to support the chi-square approximation.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Fisher Exact Test","- **Required Data Types for Input Variables:**
+  - Binary categorical data (e.g., success/failure, yes/no)
+  
+- **Sample Size Requirements:**
+  - No strict minimum sample size requirement, but typically used when sample sizes are small. The test is particularly recommended when expected frequencies in any cell of the contingency table are less than 5.
+
+- **Key Statistical Assumptions:**
+  - Independence of observations
+  - Fixed marginal totals (the row and column totals must be fixed or considered as fixed by design)
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When dealing with continuous data
+  - When sample sizes are large enough to use alternative tests like the chi-square test (generally when all expected cell counts are greater than 5)
+  - When the data does not fit into a binary categorical framework","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Mantel-Haenszel Test","- **Required Data Types for Input Variables:**
+  - Binary outcome variable
+  - Binary exposure variable
+  - Stratification variable (can be categorical)
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size requirement
+  - However, each stratum should have a sufficient number of observations to ensure reliable estimates
+
+- **Key Statistical Assumptions:**
+  - Independence of observations within each stratum
+  - Adequate sample size within each stratum to provide stable estimates
+  - The effect measure (odds ratio or risk ratio) is constant across all strata (stratum-specific measures are similar)
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the stratification variable does not adequately control for confounding
+  - When there is significant heterogeneity in the effect measure across strata
+  - When the sample size within one or more strata is too small to provide reliable estimates
+  - When the assumption of common odds ratio (or risk ratio) across strata is violated","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Mean","- **Required Data Type(s):**
+  - Continuous or discrete numerical data.
+
+- **Sample Size Requirements:**
+  - No specific minimum sample size is required to calculate the mean. However, larger samples generally provide more reliable estimates of the population mean.
+
+- **Key Statistical Assumptions:**
+  - None inherently required for calculating the mean itself.
+  - For inferential statistics using the mean (e.g., confidence intervals, hypothesis testing), assumptions may include normality of the distribution, especially for small sample sizes.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data contains extreme outliers that would skew the mean significantly, consider using the median instead.
+  - When the data is heavily skewed or non-normally distributed, particularly with small sample sizes, alternative measures like the median might be more appropriate.
+  - When the data is ordinal rather than interval or ratio, the mean may not be meaningful.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Median","- **Required Data Type(s) for Input Variables:**
+  - The median can be calculated for ordinal, interval, or ratio data types.
+
+- **Sample Size Requirements (if any):**
+  - There are no specific sample size requirements for calculating the median. It can be computed for any number of observations, even a single value.
+
+- **Key Statistical Assumptions:**
+  - No assumptions regarding distribution shape (e.g., normality) are necessary.
+  - No assumptions about independence or equal variance are required.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the goal is to summarize data using measures that rely on the mean, such as in parametric tests requiring normal distribution assumptions.
+  - When the dataset contains extreme outliers that need to be identified and handled separately before summarization.
+  - When the data type does not allow for ordering (nominal data), making the concept of a middle value meaningless.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Mode","- **Required Data Type(s):**
+  - Nominal or ordinal data types.
+
+- **Sample Size Requirements:**
+  - No specific sample size requirements. The mode can be calculated for any number of observations.
+
+- **Key Statistical Assumptions:**
+  - None required. The mode does not assume any particular distribution of the data.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the primary interest is in central tendency measures that require interval or ratio data, such as mean or median.
+  - When the dataset is multimodal and the goal is to identify a single representative value without further analysis.
+  - When the dataset contains many unique values with similar frequencies, making it difficult to discern a clear mode.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Range","- **Required Data Type(s):**
+  - Numerical (continuous or discrete)
+- **Sample Size Requirements:**
+  - No specific minimum sample size required
+- **Key Statistical Assumptions:**
+  - None; range calculation does not rely on any statistical assumptions such as normality, independence, or equal variance
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the dataset contains non-numerical values that cannot be ordered
+  - When the goal is to summarize data using measures that require more stringent assumptions (e.g., mean, standard deviation)","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Quartile","- **Required Data Type(s):**
+  - Continuous or ordinal data
+
+- **Sample Size Requirements:**
+  - No specific minimum sample size required, but generally, a larger sample size provides more reliable quartiles.
+
+- **Key Statistical Assumptions:**
+  - None specific to the calculation of quartiles themselves.
+  
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data is nominal (categorical without order)
+  - When the dataset is too small to provide meaningful quartiles (though no strict rule exists, very small datasets may not accurately represent quartiles)
+  - When the primary interest is in parametric measures that assume normal distribution, such as mean and standard deviation, rather than non-parametric measures like quartiles.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Standard Deviation","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - No specific minimum sample size is required, but smaller samples may lead to less reliable estimates of standard deviation.
+
+- **Key Statistical Assumptions:**
+  - None inherently required, but often used in contexts where data are expected to be normally distributed or at least symmetrically distributed around the mean.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When data contain extreme outliers, as standard deviation is sensitive to these values.
+  - When data are heavily skewed or non-normally distributed, especially if robust measures of spread are preferred.
+  - When dealing with categorical or ordinal data, as standard deviation is not applicable to these types of data.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Skewness","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but skewness estimates become more reliable with larger samples.
+
+- **Key Statistical Assumptions:**
+  - None specific to calculating skewness itself, but interpretations of skewness may rely on the assumption that the data is from a unimodal distribution.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data contains significant outliers or is bimodal, as skewness might not accurately represent the data's symmetry.
+  - When the primary interest is in central tendency rather than the shape of the distribution.
+  - When the data is categorical or ordinal, as skewness is not applicable to these types of data.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Kurtosis","- **Required Data Type(s):**
+  - Kurtosis is calculated for numerical data only.
+
+- **Sample Size Requirements:**
+  - No specific minimum sample size is universally required for calculating kurtosis, but smaller samples may lead to less reliable estimates of kurtosis due to sampling variability.
+
+- **Key Statistical Assumptions:**
+  - None specific to the calculation of kurtosis itself, but interpretations of kurtosis often assume the data is normally distributed or at least symmetric around its mean.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data contains significant outliers, as kurtosis is highly sensitive to extreme values.
+  - When the data is heavily skewed, as skewness can confound the interpretation of kurtosis.
+  - When the sample size is extremely small, leading to unreliable estimates of kurtosis.
+  - When the data does not meet the basic requirements of being numerical.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Mood Variance Test","- **Required Data Type(s):**
+  - Continuous or ordinal data for the variable of interest.
+  - Categorical data for grouping (typically two groups).
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is universally required, but small samples may reduce the test's power and reliability.
+
+- **Key Statistical Assumptions:**
+  - Observations within each group are independent.
+  - The data in each group should be measured on an ordinal scale or can be assumed to approximate a continuous distribution.
+  - The variances across groups are equal (homogeneity of variance).
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data does not meet the assumption of ordinal or approximately continuous measurement.
+  - When the assumption of equal variances across groups is severely violated.
+  - When the sample sizes are extremely small, potentially leading to unreliable results.
+  - When the data contains significant outliers that cannot be reasonably addressed or removed.
+  - When the relationship between the groups is not adequately captured by comparing variances alone.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Levene Test","- **Required Data Types for Input Variables:**
+  - Continuous or scale data for the variable being tested.
+  - Categorical data for grouping variables.
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is required, but small sample sizes may reduce the test's power to detect significant differences in variances.
+  - Generally, larger samples provide more reliable results.
+
+- **Key Statistical Assumptions:**
+  - Independence of observations within each group.
+  - The groups being compared should have similar shapes of distributions, though not necessarily identical.
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data contains extreme outliers that significantly affect the variance.
+  - When the sample sizes across groups are extremely unequal, potentially leading to biased results.
+  - When the data does not meet the assumption of similar distribution shapes across groups.
+  - For ordinal data, where a non-parametric alternative like the Brown-Forsythe test might be preferred.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"Bartlett Test","- **Required Data Type(s):**
+  - Continuous numerical data.
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is universally required, but generally, each group should have at least 5 observations to meet the assumption of normality.
+
+- **Key Statistical Assumptions:**
+  - Independence of observations across groups.
+  - Normal distribution within each group.
+  - Homogeneity of variances across groups (this is what the test primarily checks).
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the assumption of normality is severely violated, especially in small samples.
+  - When there is significant heterogeneity of variances that cannot be corrected.
+  - For categorical or ordinal data types.
+  - In cases where sample sizes are extremely small, leading to unreliable results.
+  - When robustness against violations of normality is preferred over sensitivity to homogeneity of variances.","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"
+"F-Test for Variance","- **Required Data Type(s):**
+  - Continuous numerical data
+
+- **Sample Size Requirements:**
+  - No strict minimum sample size is universally required, but generally, larger samples provide more reliable results. Small sample sizes may lead to unreliable F-test outcomes due to sensitivity to deviations from assumptions.
+
+- **Key Statistical Assumptions:**
+  - Independence of observations
+  - Normal distribution of the populations from which the samples are drawn
+  - Homogeneity of variances across groups being compared
+
+- **Conditions Under Which This Method Should NOT Be Used:**
+  - When the data does not meet the assumption of normality, especially with small sample sizes
+  - When the assumption of homogeneity of variances is violated
+  - When the data contains significant outliers that cannot be removed or adjusted
+  - For categorical or non-continuous data types","","","","","","","0","42","/rds/general/user/yx3422/home/qwen2.5-14b"

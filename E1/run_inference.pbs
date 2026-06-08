@@ -1,0 +1,47 @@
+#!/bin/bash
+#PBS -N exp1_part1_inference
+#PBS -l select=1:ncpus=8:mem=64gb:ngpus=1:gpu_type=L40S
+#PBS -l walltime=01:00:00
+#PBS -j oe
+#PBS -o exp1_part1_inference.log
+
+# =============================================================================
+# Submit:        qsub run_inference.pbs
+# Check status:  qstat -u $USER
+# Cancel:        qdel <job_id>
+# Live log:      tail -f exp1_part1_inference.log
+# =============================================================================
+
+set -e
+
+echo "======================================"
+echo "Exp 1 Part 1: General Rule Recall"
+echo "Model: Qwen2.5-14B-Instruct"
+echo "======================================"
+echo "Job started:  $(date)"
+echo "Host:         $(hostname)"
+echo "GPU(s):       ${CUDA_VISIBLE_DEVICES:-<set by scheduler>}"
+nvidia-smi || echo "nvidia-smi unavailable"
+echo "--------------------------------------"
+
+# 1. Activate conda environment
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate llama_eval
+
+# 2. Single GPU 
+export CUDA_VISIBLE_DEVICES=0
+
+# 3. Move to the directory the job was submitted from
+cd "$PBS_O_WORKDIR"
+echo "Working directory: $(pwd)"
+echo "Python:            $(which python)"
+echo "--------------------------------------"
+
+
+# 4. Real inference: 27 methods x 1 run each
+echo "--- REAL RUN ---"
+python Run_inference.py
+
+echo "======================================"
+echo "Job finished: $(date)"
+echo "======================================"
