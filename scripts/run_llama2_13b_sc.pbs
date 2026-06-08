@@ -1,0 +1,56 @@
+#!/bin/bash
+#PBS -N llama2_13b_sc
+#PBS -l select=1:ncpus=8:ngpus=1:mem=64gb
+#PBS -l walltime=10:00:00
+#PBS -j oe
+#PBS -o llama2_13b_sc.log
+
+echo "======================================"
+echo "Running LLaMA-2-13B (SC)"
+echo "Job started at: $(date)"
+echo "Running on node: $(hostname)"
+echo "======================================"
+
+# 进入提交作业的目录
+cd /rds/general/user/yx3422/home/m4r_project
+
+# 激活 conda 环境
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate llama_eval
+
+echo "Conda environment activated"
+
+# 指定 GPU
+export CUDA_VISIBLE_DEVICES=0
+
+# 创建日志目录
+mkdir -p logs
+
+# 定义 prompting strategies
+TRICKS=(
+  "self-consistency-CoT"
+)
+
+# 循环运行
+for TRICK in "${TRICKS[@]}"; do
+
+  echo "--------------------------------------"
+  echo "Running strategy: $TRICK"
+  echo "--------------------------------------"
+
+  python scripts/llama_evaluation_sc.py \
+    --model_type 2_13b \
+    --dataset_name mini-StatQA \
+    --output_name llama \
+    --trick "$TRICK" \
+    --n_samples 10 
+
+  echo "Finished strategy: $TRICK"
+
+done
+
+echo "======================================"
+echo "All strategies finished"
+echo "Job finished at: $(date)"
+echo "======================================"
+

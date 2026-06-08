@@ -1,0 +1,6 @@
+model,overall_score_rate,Correlation Analysis,Contingency Table Test,Distribution Compliance Test,Variance Test,Descriptive Statistics
+overall-llama2_7b_one-shot-CoT,0.16595,0.0119,0.07422,0.07203,0.21721,0.39382
+overall-llama2_7b_one-shot,0.14961,0.00595,0.0625,0.05932,0.19262,0.37066
+overall-llama2_7b_stats-prompt,0.16251,0.00595,0.08203,0.09322,0.18443,0.3861
+overall-llama2_7b_zero-shot-CoT,0.07395,0.0119,0.01172,0.02119,0.10656,0.19305
+overall-llama2_7b_zero-shot,0.08083,0.01786,0.01172,0.02119,0.06967,0.25483

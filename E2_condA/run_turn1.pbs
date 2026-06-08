@@ -1,0 +1,40 @@
+#!/bin/bash
+#PBS -N exp2_condA_turn1
+#PBS -l select=1:ncpus=8:mem=64gb:ngpus=1:gpu_type=L40S
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -o exp2_condA_turn1.log
+
+# =============================================================================
+# Turn 1: Applicability Summary Generation.
+# Submit:   qsub run_turn1.pbs
+# Resume:   resubmit — skips done question_ids.
+#
+# After this finishes, run parse_turn1.py (CPU, fast), then submit
+# run_turn2.pbs. The two turns are deliberately separate jobs so Turn 2 runs
+# in a completely fresh context (the 5.2.1.1 context reset).
+#
+# Walltime 2h: 50 questions x up to 4096 tokens. Usually ~30-50 min + load.
+# =============================================================================
+
+set -e
+echo "=== Exp 2 Cond A — Turn 1 ==="
+echo "Started: $(date)  Host: $(hostname)"
+nvidia-smi || echo "nvidia-smi unavailable"
+
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate llama_eval
+export CUDA_VISIBLE_DEVICES=0
+cd "$PBS_O_WORKDIR"
+echo "WD: $(pwd)  Python: $(which python)"
+
+echo "--- DRY RUN ---"
+python run_turn1.py --dry-run
+
+echo "--- REAL RUN ---"
+python run_turn1.py
+
+echo "--- PARSE TURN 1 (CPU) ---"
+python parse_turn1.py
+
+echo "Finished: $(date)"
