@@ -1,0 +1,1559 @@
+row_id,task,question,gt_methods,pred_methods,auto_label_clarity,auto_verdicts,HUMAN_label_clarity[fully_labeled/partially_labeled/narrative_only],HUMAN_notes,model_output
+148,Contingency Table Test,Are there any indications of a connection between smoking habits (SMOKE) and weight classification (NObeyesdad)?,Chi-square Independence Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=include|Mantel-Haenszel Test=exclude,,,"1. **Identify the variables involved:**
+   - SMOKE (categorical): Smoking habits.
+   - NObeyesdad (categorical): Weight classification.
+
+2. **Determine the statistical task type:**
+   - The task is to determine if there is a connection between two categorical variables. This suggests a contingency table test.
+
+3. **Select the appropriate method category:**
+   - Contingency Table Test: Chi-square Independence Test, Fisher Exact Test, Mantel-Haenszel Test.
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Chi-square Independence Test | INCLUDE | Suitable for testing independence between two categorical variables. |
+   | Fisher Exact Test        | INCLUDE  | Suitable for small sample sizes or when expected cell counts are low.  |
+   | Mantel-Haenszel Test     | EXCLUDE  | Not suitable for testing independence between two categorical variables. |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (no contradictions).
+   - Fisher Exact Test: INCLUDE (no contradictions).
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""SMOKE"", ""NObeyesdad""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+389,Distribution Compliance Test,Is the annual crop production in Myanmar normally distributed?,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=include|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is the annual crop production in Myanmar, which is a quantitative variable.
+
+2. **Determine the statistical task type:**
+   - The task is to determine if the annual crop production in Myanmar is normally distributed. This falls under the category of Distribution Compliance Test.
+
+3. **Select the appropriate method category:**
+   - The appropriate category is Distribution Compliance Test.
+
+4. **Evaluate the candidate methods:**
+   | Method | Decision | Reason |
+   | ------ | -------- | ------ |
+   | Anderson-Darling Test | INCLUDE | Suitable for testing normality of a distribution. |
+   | Shapiro-Wilk Test of Normality | INCLUDE | Suitable for testing normality of a distribution, especially for small sample sizes. |
+   | Kolmogorov-Smirnov Test for Normality | INCLUDE | Suitable for testing normality of a distribution. |
+   | Lilliefors Test | INCLUDE | Suitable for testing normality of a distribution, especially when the parameters are estimated from the data. |
+   | Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Not relevant for testing normality. |
+   | Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Not relevant for testing normality. |
+   | Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Not relevant for testing normality. |
+
+5. **Self-check:**
+   - After reviewing the methods, the ones marked as INCLUDE are Anderson-Darling Test, Shapiro-Wilk Test of Normality, Kolmogorov-Smirnov Test for Normality, and Lilliefors Test. These methods are all relevant for testing the normality of a distribution.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Myanmar""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Kolmogorov-Smirnov Test for Normality"", ""Lilliefors Test""]
+}
+```"
+350,Variance Test,Do the variances in annual crop production in Thailand and China demonstrate statistical similarity?,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - The variables involved are the annual crop production in Thailand and China.
+
+2. **Determine the statistical task type:**
+   - The task is to determine if the variances in annual crop production in Thailand and China are statistically similar.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Variance Test.
+
+4. **Evaluate the candidate methods:**
+   - We need to evaluate the methods under the Variance Test category.
+   - Since the data type for both Thailand and China is quantitative and the number of rows is the same (4), we can use methods that compare variances between two groups.
+
+| Method                  | Decision | Reason                                                                 |
+|-------------------------|----------|------------------------------------------------------------------------|
+| Mood Variance Test      | INCLUDE  | Suitable for comparing variances between two groups.                    |
+| Levene Test             | INCLUDE  | Suitable for comparing variances between two groups.                    |
+| Bartlett Test           | INCLUDE  | Suitable for comparing variances between two groups.                    |
+| F-Test for Variance     | INCLUDE  | Suitable for comparing variances between two groups.                    |
+
+5. **Self-check:**
+   - All methods listed in the table are suitable for comparing variances between two groups and do not contradict any conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Thailand"", ""China""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+52,Distribution Compliance Test,Do household income and the number of teenagers in the customer's household follow a similar distribution curve?,Kolmogorov-Smirnov Test,Kolmogorov-Smirnov Test,fully_labeled,Anderson-Darling Test=exclude|Shapiro-Wilk Test of Normality=exclude|Kolmogorov-Smirnov Test for Normality=exclude|Kolmogorov-Smirnov Test=include|Lilliefors Test=exclude|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - Household Income (Income)
+   - Number of Teenagers (Teenhome)
+
+2. **Determine the statistical task type:**
+   - The task is to compare the distribution curves of two quantitative variables, which suggests a Distribution Compliance Test or a method to compare distributions.
+
+3. **Select the appropriate method category:**
+   - Since we are comparing the distribution curves of two quantitative variables, the most relevant category is the Distribution Compliance Test.
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate the methods from the Distribution Compliance Test category.
+
+| Method                          | Decision | Reason                                                                 |
+|---------------------------------|----------|------------------------------------------------------------------------|
+| Anderson-Darling Test           | EXCLUDE  | This test is used to test for normality or other specific distributions, not for comparing two distributions directly. |
+| Shapiro-Wilk Test of Normality  | EXCLUDE  | This test is used to test for normality, not for comparing two distributions directly. |
+| Kolmogorov-Smirnov Test for Normality | EXCLUDE | This test is used to test for normality, not for comparing two distributions directly. |
+| Lilliefors Test                 | EXCLUDE  | This test is used to test for normality, not for comparing two distributions directly. |
+| Kolmogorov-Smirnov Test         | INCLUDE  | This test can be used to compare two distributions directly. |
+| Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | This test is used to test for uniform distribution, not for comparing two distributions directly. |
+| Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | This test is used to test for Gamma distribution, not for comparing two distributions directly. |
+| Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | This test is used to test for Exponential distribution, not for comparing two distributions directly. |
+
+5. **Self-check:**
+   - The only method marked INCLUDE is the Kolmogorov-Smirnov Test, which is appropriate for comparing two distributions directly.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Income"", ""Teenhome""],
+  ""methods"": [""Kolmogorov-Smirnov Test""]
+}
+```"
+332,Variance Test,Is there a similar level of variability between workday alcohol consumption (Dalc) and weekend alcohol consumption (Walc)?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - Dalc (workday alcohol consumption)
+   - Walc (weekend alcohol consumption)
+
+2. **Determine the statistical task type:**
+   - The task is to compare the variability between two quantitative variables (Dalc and Walc).
+
+3. **Select the appropriate method category:**
+   - The task involves comparing the variability between two quantitative variables, which falls under the category of Variance Test.
+
+4. **Evaluate the candidate methods:**
+   - Mood Variance Test
+   - Levene Test
+   - Bartlett Test
+   - F-Test for Variance
+
+| Method             | Decision | Reason                                                                 |
+|--------------------|----------|------------------------------------------------------------------------|
+| Mood Variance Test | INCLUDE  | Suitable for comparing variances between two groups.                   |
+| Levene Test        | INCLUDE  | Robust to departures from normality, suitable for comparing variances. |
+| Bartlett Test      | INCLUDE  | Suitable for comparing variances between two groups, assumes normality. |
+| F-Test for Variance| INCLUDE  | Suitable for comparing variances between two groups, assumes normality. |
+
+5. **Self-check:**
+   - All methods marked INCLUDE are appropriate for comparing the variability between two quantitative variables (Dalc and Walc). None of the methods contradict the conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Dalc"", ""Walc""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+377,Variance Test,Are the variances of the measured weight and the length of each exercise session homogeneous?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - Measured weight: Actual Weight
+   - Length of each exercise session: Duration
+
+2. **Determine the statistical task type:**
+   - The task is to check if the variances of two quantitative variables (Actual Weight and Duration) are homogeneous.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Variance Test.
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Mood Variance Test      | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+   | Levene Test             | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+   | Bartlett Test           | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+   | F-Test for Variance      | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+
+5. **Self-check:**
+   - All methods listed are suitable for comparing the variances of two quantitative variables. No contradictions are found.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Actual Weight"", ""Duration""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+150,Distribution Compliance Test,Does the occurrence of the attack method involving bombing or explosion align with a normal distribution?,Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is ""Attack method: Bombing/Explosion"".
+
+2. **Determine the statistical task type:**
+   - The task is to determine if the occurrence of the attack method involving bombing or explosion aligns with a normal distribution. This falls under the category of Distribution Compliance Test.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Distribution Compliance Test.
+
+4. **Evaluate the candidate methods:**
+   | Method | Decision | Reason |
+   | ------ | -------- | ------ |
+   | Anderson-Darling Test | INCLUDE | It is a test for normality and can be used to determine if the data follows a normal distribution. |
+   | Shapiro-Wilk Test of Normality | INCLUDE | It is a test for normality and is suitable for small to medium-sized samples. |
+   | Kolmogorov-Smirnov Test for Normality | INCLUDE | It is a test for normality and can be used to determine if the data follows a normal distribution. |
+   | Lilliefors Test | INCLUDE | It is a test for normality and is suitable for small to medium-sized samples. |
+   | Kolmogorov-Smirnov Test | EXCLUDE | This test is not specifically for normality and is not suitable for this task. |
+   | Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | This test is for uniform distribution, not normality. |
+   | Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | This test is for Gamma distribution, not normality. |
+   | Kolmogorov-Smirnos Test for Exponential distribution | EXCLUDE | This test is for Exponential distribution, not normality. |
+
+5. **Self-check:**
+   - The methods marked INCLUDE are Anderson-Darling Test, Shapiro-Wilk Test of Normality, and Lilliefors Test. These methods are all appropriate for testing normality and do not contradict any conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Attack method: Bombing/Explosion""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Lilliefors Test""]
+}
+```"
+216,Variance Test,Do the fluctuations in the Research Quality Score compare to those in the Teaching Score?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - Research Quality Score (quantitative)
+   - Teaching Score (quantitative)
+
+2. **Determine the statistical task type:**
+   - The question is asking about comparing the fluctuations (variance) in two quantitative variables.
+
+3. **Select the appropriate method category:**
+   - Variance Test
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Mood Variance Test      | INCLUDE  | Suitable for comparing variances between two groups.                  |
+   | Levene Test             | INCLUDE  | Suitable for comparing variances between two groups.                  |
+   | Bartlett Test           | INCLUDE  | Suitable for comparing variances between two groups.                  |
+   | F-Test for Variance     | INCLUDE  | Suitable for comparing variances between two groups.                  |
+
+5. **Self-check:**
+   - All methods listed are suitable for comparing variances between two groups and do not contradict any conditions identified.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Research Quality Score"", ""Teaching Score""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+328,Variance Test,Do the variances of the player's overall skills and abilities and the player's weight in pounds exhibit homogeneity?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - Player's overall skills and abilities (Overall)
+   - Player's weight in pounds (Weight)
+
+2. **Determine the statistical task type:**
+   - The task is to determine if the variances of the two quantitative variables (Overall and Weight) are homogeneous.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Variance Test.
+
+4. **Evaluate the candidate methods:**
+   | Method               | Decision | Reason                                                                 |
+   |----------------------|----------|------------------------------------------------------------------------|
+   | Mood Variance Test   | INCLUDE  | Suitable for testing homogeneity of variances between two groups.       |
+   | Levene Test          | INCLUDE  | Suitable for testing homogeneity of variances between two groups.       |
+   | Bartlett Test        | INCLUDE  | Suitable for testing homogeneity of variances between two groups.       |
+   | F-Test for Variance  | INCLUDE  | Suitable for testing homogeneity of variances between two groups.       |
+
+5. **Self-check:**
+   - All methods listed are suitable for testing the homogeneity of variances between two groups. No contradictions are found.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Overall"", ""Weight""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+395,Distribution Compliance Test,How can I visually assess whether the annual crop production in Thailand follows a normal distribution?,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=include|Lilliefors Test=include|Mean=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is the annual crop production in Thailand.
+
+2. **Determine the statistical task type:**
+   - The task is to visually assess whether the annual crop production in Thailand follows a normal distribution.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is ""Distribution Compliance Test"" since we are testing for normality.
+
+4. **Evaluate the candidate methods:**
+   | Method | Decision | Reason |
+   | ------ | -------- | ------ |
+   | Anderson-Darling Test | INCLUDE | Suitable for testing normality of a sample. |
+   | Shapiro-Wilk Test of Normality | INCLUDE | Suitable for testing normality of a sample, especially for small sample sizes. |
+   | Kolmogorov-Smirnov Test for Normality | INCLUDE | Suitable for testing normality of a sample. |
+   | Lilliefors Test | INCLUDE | Suitable for testing normality of a sample, especially when the mean and variance are unknown. |
+   | Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Not suitable for testing normality. |
+   | Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Not suitable for testing normality. |
+   | Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Not suitable for testing normality. |
+
+5. **Self-check:**
+   - All methods marked INCLUDE are from the ""Distribution Compliance Test"" category and are suitable for testing normality.
+   - No contradictions are found.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Thailand""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Kolmogorov-Smirnov Test for Normality"", ""Lilliefors Test""]
+}
+```"
+374,Contingency Table Test,Do specific categories of anxiety symptoms influence the distribution of lung cancer diagnoses?,Chi-square Independence Test|Fisher Exact Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=include|Mantel-Haenszel Test=exclude,,,"1. **Identify the variables involved:**
+   - Anxiety symptoms (ANXIETY)
+   - Lung cancer diagnoses (LUNG_CANCER)
+
+2. **Determine the statistical task type:**
+   - The task involves comparing the distribution of lung cancer diagnoses across different categories of anxiety symptoms. This suggests a contingency table test.
+
+3. **Select the appropriate method category:**
+   - Contingency Table Test
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Chi-square Independence Test | INCLUDE | Suitable for testing independence between two categorical variables. |
+   | Fisher Exact Test       | INCLUDE  | Suitable for small sample sizes or when expected cell counts are low.   |
+   | Mantel-Haenszel Test    | EXCLUDE  | Not applicable for this specific comparison between two categorical variables. |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (no contradictions)
+   - Fisher Exact Test: INCLUDE (no contradictions)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""ANXIETY"", ""LUNG_CANCER""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+26,Contingency Table Test,"Is there a significant association between the presence of yellow fingers, indicating a smoking habit, and the presence of chest pain symptoms?",Chi-square Independence Test|Fisher Exact Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=include|Mantel-Haenszel Test=exclude,,,"1. **Identify the variables involved:**
+   - Variable 1: YELLOW_FINGERS (categorical)
+   - Variable 2: CHEST PAIN (categorical)
+
+2. **Determine the statistical task type:**
+   - The task is to determine if there is a significant association between two categorical variables.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Contingency Table Test.
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Chi-square Independence Test | INCLUDE | Suitable for testing the independence between two categorical variables. |
+   | Fisher Exact Test       | INCLUDE  | Suitable for small sample sizes or when expected cell counts are low.     |
+   | Mantel-Haenszel Test    | EXCLUDE  | Not suitable for testing the independence between two categorical variables. |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (no contradictions)
+   - Fisher Exact Test: INCLUDE (no contradictions)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""YELLOW_FINGERS"", ""CHEST PAIN""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+57,Variance Test,"Is the variability in the Total, which represents the sum of all base stats (Health Points, Attack, Defense, Special Attack, Special Defense, and Speed), comparable to that of Weight_kg, which represents the weight of the Pokemon in kilograms?",Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - Total (quantitative)
+   - Weight_kg (quantitative)
+
+2. **Determine the statistical task type:**
+   - The task is to compare the variability of two quantitative variables, Total and Weight_kg.
+
+3. **Select the appropriate method category:**
+   - Variance Test: This category is suitable for comparing the variability of two quantitative variables.
+
+4. **Evaluate the candidate methods:**
+   - Mood Variance Test: INCLUDE, as it is used to compare the variances of two samples.
+   - Levene Test: INCLUDE, as it is used to compare the variances of two samples.
+   - Bartlett Test: INCLUDE, as it is used to compare the variances of two samples.
+   - F-Test for Variance: INCLUDE, as it is used to compare the variances of two samples.
+
+| Method               | Decision | Reason                                                                 |
+|----------------------|----------|----------------------------------------------------------------------|
+| Mood Variance Test   | INCLUDE  | Suitable for comparing variances of two quantitative variables.       |
+| Levene Test          | INCLUDE  | Suitable for comparing variances of two quantitative variables.       |
+| Bartlett Test        | INCLUDE  | Suitable for comparing variances of two quantitative variables.       |
+| F-Test for Variance  | INCLUDE  | Suitable for comparing variances of two quantitative variables.       |
+
+5. **Self-check:**
+   - All methods marked INCLUDE are valid for comparing the variability of two quantitative variables.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Total"", ""Weight_kg""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+81,Contingency Table Test,Does a player's physical appearance or body type relate to whether they are accurately represented in the game?,Chi-square Independence Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=include|Mantel-Haenszel Test=exclude,,,"1. **Identify the variables involved:**
+   - Physical appearance or body type (categorical: Body Type)
+   - Accurately represented in the game (binary: Real Face)
+
+2. **Determine the statistical task type:**
+   - The task involves examining the relationship between a categorical variable (Body Type) and a binary variable (Real Face). This suggests a contingency table test.
+
+3. **Select the appropriate method category:**
+   - Contingency Table Test
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Chi-square Independence Test | INCLUDE  | Suitable for testing the independence between two categorical variables. |
+   | Fisher Exact Test        | INCLUDE  | Suitable for small sample sizes or when expected cell counts are low.    |
+   | Mantel-Haenszel Test     | EXCLUDE  | Not applicable for binary outcome variables.                            |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (no contradictions)
+   - Fisher Exact Test: INCLUDE (no contradictions)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Body Type"", ""Real Face""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+200,Variance Test,To what extent do the variance patterns of the player's special abilities and height exhibit parallelism?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - The variables involved are 'Special' and 'Height'.
+
+2. **Determine the statistical task type:**
+   - The task is to compare the variance patterns of two quantitative variables, 'Special' and 'Height'.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is 'Variance Test' since we are comparing the variance patterns of two quantitative variables.
+
+4. **Evaluate the candidate methods:**
+   - Mood Variance Test: INCLUDE, as it is used to compare variances of two samples.
+   - Levene Test: INCLUDE, as it is used to compare variances of two samples.
+   - Bartlett Test: INCLUDE, as it is used to compare variances of two samples.
+   - F-Test for Variance: INCLUDE, as it is used to compare variances of two samples.
+
+| Method             | Decision | Reason                                                                 |
+|--------------------|----------|------------------------------------------------------------------------|
+| Mood Variance Test | INCLUDE  | Used to compare variances of two samples.                               |
+| Levene Test        | INCLUDE  | Used to compare variances of two samples.                               |
+| Bartlett Test      | INCLUDE  | Used to compare variances of two samples.                               |
+| F-Test for Variance| INCLUDE  | Used to compare variances of two samples.                               |
+
+5. **Self-check:**
+   - All methods marked INCLUDE are from the 'Variance Test' category and are appropriate for comparing the variance patterns of two quantitative variables.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Special"", ""Height""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+129,Distribution Compliance Test,"Are the values in the variable ""AGE"" indicative of a normal distribution?",Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Mode=include|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is ""AGE"".
+
+2. **Determine the statistical task type:**
+   - The task is to determine if the values in the variable ""AGE"" are indicative of a normal distribution.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is ""Distribution Compliance Test"".
+
+4. **Evaluate the candidate methods:**
+   | Method | Decision | Reason |
+   | ------ | -------- | ------ |
+   | Anderson-Darling Test | INCLUDE | It is used to test if a sample is from a specified distribution, suitable for testing normality. |
+   | Shapiro-Wilk Test of Normality | INCLUDE | It is specifically designed to test for normality, making it highly relevant. |
+   | Kolmogorov-Smirnov Test for Normality | INCLUDE | It can be used to test for normality, although it is less powerful than the Shapiro-Wilk test for small to moderate sample sizes. |
+   | Lilliefors Test | INCLUDE | It is an adaptation of the Kolmogorov-Smirnov test for normality when parameters are estimated from the data. |
+   | Kolmogorov-Smirnov Test | EXCLUDE | This test is not specific to normality and is less powerful for testing normality compared to the other tests listed. |
+   | Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | This test is for uniform distribution, not normality. |
+   | Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | This test is for Gamma distribution, not normality. |
+   | Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | This test is for Exponential distribution, not normality. |
+
+5. **Self-check:**
+   - The methods marked INCLUDE are Anderson-Darling Test, Shapiro-Wilk Test of Normality, and Lilliefors Test. These methods are all relevant for testing normality and do not contradict any conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""AGE""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Lilliefors Test""]
+}
+```"
+269,Distribution Compliance Test,What is the likelihood that the scores on the TOEFL (Test of English as a Foreign Language) exam are sampled from a normal distribution?,Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is the TOEFL Score, which is quantitative.
+
+2. **Determine the statistical task type:**
+   - The task is to test whether the TOEFL Score is sampled from a normal distribution.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is the Distribution Compliance Test.
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate each method in the Distribution Compliance Test category to see if it is applicable to the TOEFL Score.
+
+| Method                          | Decision | Reason                                                                 |
+|---------------------------------|----------|------------------------------------------------------------------------|
+| Anderson-Darling Test           | INCLUDE  | Tests for normality, suitable for quantitative data.                  |
+| Shapiro-Wilk Test of Normality  | INCLUDE  | Tests for normality, suitable for quantitative data.                  |
+| Kolmogorov-Smirnov Test for Normality | INCLUDE | Tests for normality, suitable for quantitative data.              |
+| Lilliefors Test                 | INCLUDE  | Tests for normality, suitable for quantitative data.                  |
+| Kolmogorov-Smirnov Test         | EXCLUDE  | General Kolmogorov-Smirnov Test is not specific to normality.         |
+| Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Not for testing normality.                                  |
+| Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Not for testing normality.                                  |
+| Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Not for testing normality.                                 |
+
+5. **Self-check:**
+   - The methods marked INCLUDE are Anderson-Darling Test, Shapiro-Wilk Test of Normality, and Lilliefors Test. These methods are all appropriate for testing the normality of a quantitative variable like TOEFL Score.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""TOEFL Score""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Lilliefors Test""]
+}
+```"
+120,Contingency Table Test,Is there variation in the association between the experience of peer pressure related to smoking and the presence of chronic disease when stratified by gender?,Mantel-Haenszel Test,Chi-square Independence Test|Mantel-Haenszel Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=exclude|Mantel-Haenszel Test=include,,,"1. **Identify the variables involved:**
+   - Peer Pressure (PEER_PRESSURE)
+   - Chronic Disease (CHRONIC DISEASE)
+   - Gender (GENDER) - as a stratification variable
+
+2. **Determine the statistical task type:**
+   - The task involves assessing the association between two categorical variables (PEER_PRESSURE and CHRONIC DISEASE) stratified by a third categorical variable (GENDER).
+
+3. **Select the appropriate method category:**
+   - Contingency Table Test, as it is used to test the independence between categorical variables.
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Chi-square Independence Test | INCLUDE | Suitable for testing the independence between two categorical variables stratified by a third variable. |
+   | Fisher Exact Test       | EXCLUDE  | Not suitable for stratified analysis involving more than two variables. |
+   | Mantel-Haenszel Test    | INCLUDE  | Suitable for testing the association between two categorical variables stratified by a third variable. |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (valid for stratified analysis)
+   - Fisher Exact Test: EXCLUDE (not suitable for stratified analysis)
+   - Mantel-Haenszel Test: INCLUDE (valid for stratified analysis)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""PEER_PRESSURE"", ""CHRONIC DISEASE"", ""GENDER""],
+  ""methods"": [""Chi-square Independence Test"", ""Mantel-Haenszel Test""]
+}
+```"
+256,Correlation Analysis,Is there a linear correlation between the weekly study time and the first period grade?,Pearson Correlation Coefficient|Spearman Correlation Coefficient|Kendall Correlation Coefficient,Pearson Correlation Coefficient,fully_labeled,Pearson Correlation Coefficient=include|Spearman Correlation Coefficient=exclude|Kendall Correlation Coefficient=exclude|Partial Correlation Coefficient=exclude,,,"1. **Identify the variables involved:**
+   - Weekly study time (studytime)
+   - First period grade (G1)
+
+2. **Determine the statistical task type:**
+   - The task is to determine if there is a linear correlation between two quantitative variables.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Correlation Analysis.
+
+4. **Evaluate the candidate methods:**
+   | Method                      | Decision | Reason                                                                 |
+   |-----------------------------|----------|------------------------------------------------------------------------|
+   | Pearson Correlation Coefficient | INCLUDE  | Measures linear correlation between two quantitative variables.      |
+   | Spearman Correlation Coefficient | EXCLUDE  | Measures monotonic relationship, not specifically linear correlation. |
+   | Kendall Correlation Coefficient | EXCLUDE  | Measures ordinal association, not specifically linear correlation.   |
+   | Partial Correlation Coefficient | EXCLUDE  | Requires controlling for other variables, not needed here.           |
+
+5. **Self-check:**
+   - Pearson Correlation Coefficient is the only method marked INCLUDE and it is appropriate for measuring linear correlation between two quantitative variables.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""studytime"", ""G1""],
+  ""methods"": [""Pearson Correlation Coefficient""]
+}
+```"
+334,Contingency Table Test,Does the observed frequency conform to the assumption of independence between legendary status and gender classification among the Pokémon?,Fisher Exact Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=include,,,"1. **Identify the variables involved:**
+   - The variables involved are 'isLegendary' (categorical) and 'hasGender' (categorical).
+
+2. **Determine the statistical task type:**
+   - The task is to test the independence between two categorical variables, which falls under Contingency Table Test.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Contingency Table Test.
+
+4. **Evaluate the candidate methods:**
+   - The candidate methods are Chi-square Independence Test and Fisher Exact Test.
+
+| Method                  | Decision | Reason                                                                 |
+|-------------------------|----------|------------------------------------------------------------------------|
+| Chi-square Independence Test | INCLUDE  | Suitable for testing independence between two categorical variables. |
+| Fisher Exact Test       | INCLUDE  | Suitable for testing independence between two categorical variables, especially for small sample sizes. |
+
+5. **Self-check:**
+   - Both methods are suitable for testing the independence between two categorical variables. No contradictions are found.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""isLegendary"", ""hasGender""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+386,Variance Test,Are the variances of average glucose level and body mass index similar?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - The variables involved are `avg_glucose_level` and `bmi`.
+
+2. **Determine the statistical task type:**
+   - The task is to compare the variances of two quantitative variables.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Variance Test.
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate the methods under the Variance Test category.
+
+| Method                  | Decision | Reason                                                                 |
+|-------------------------|----------|------------------------------------------------------------------------|
+| Mood Variance Test      | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+| Levene Test             | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+| Bartlett Test           | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+| F-Test for Variance      | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+
+5. **Self-check:**
+   - All methods listed are suitable for comparing the variances of two quantitative variables. No contradictions are found.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""avg_glucose_level"", ""bmi""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+60,Distribution Compliance Test,Is it possible to infer whether the distribution of the budget allocated for TV advertising and the sales revenue generated are equivalent?,Kolmogorov-Smirnov Test,Kolmogorov-Smirnov Test,fully_labeled,Kolmogorov-Smirnov Test=include|Anderson-Darling Test=exclude|Shapiro-Wilk Test of Normality=exclude|Lilliefors Test=exclude|Kolmogorov-Smirnov Test for Normality=exclude|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - TV Ad Budget ($)
+   - Sales ($)
+
+2. **Determine the statistical task type:**
+   - The task is to infer whether the distribution of the budget allocated for TV advertising and the sales revenue generated are equivalent. This involves comparing the distributions of two quantitative variables.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category here is the Distribution Compliance Test, specifically a test that can compare the distributions of two quantitative variables.
+
+4. **Evaluate the candidate methods:**
+   - Since we are comparing the distributions of two quantitative variables, we can use the Kolmogorov-Smirnov Test for comparing two samples.
+   - Other methods in the Distribution Compliance Test category are not suitable as they are typically used to test compliance with a specific distribution (e.g., normal, uniform, etc.), not to compare two samples directly.
+
+| Method | Decision | Reason |
+|--------|----------|--------|
+| Kolmogorov-Smirnov Test | INCLUDE | Suitable for comparing the distributions of two quantitative variables. |
+| Anderson-Darling Test | EXCLUDE | Not designed for comparing two samples directly. |
+| Shapiro-Wilk Test of Normality | EXCLUDE | Tests for normality, not for comparing two samples. |
+| Lilliefors Test | EXCLUDE | Tests for normality with unknown parameters, not for comparing two samples. |
+| Kolmogorov-Smirnov Test for Normality | EXCLUDE | Tests for normality, not for comparing two samples. |
+| Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Tests for uniform distribution, not for comparing two samples. |
+| Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Tests for Gamma distribution, not for comparing two samples. |
+| Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Tests for Exponential distribution, not for comparing two samples. |
+
+5. **Self-check:**
+   - The only method marked INCLUDE is the Kolmogorov-Smirnov Test, which is appropriate for comparing the distributions of two quantitative variables.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""TV Ad Budget ($)"", ""Sales ($)""],
+  ""methods"": [""Kolmogorov-Smirnov Test""]
+}
+```"
+342,Contingency Table Test,Is there a relationship between the presence of family history with overweight and the different categories of NObeyesdad?,Chi-square Independence Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=include|Mantel-Haenszel Test=exclude,,,"1. **Identify the variables involved:**
+   - The variable ""family_history_with_overweight"" is categorical.
+   - The variable ""NObeyesdad"" is categorical.
+
+2. **Determine the statistical task type:**
+   - The task is to determine if there is a relationship between two categorical variables. This falls under the category of Contingency Table Test.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Contingency Table Test.
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Chi-square Independence Test | INCLUDE  | Suitable for testing the independence between two categorical variables. |
+   | Fisher Exact Test        | INCLUDE  | Suitable for small sample sizes or when expected cell counts are low.     |
+   | Mantel-Haenszel Test     | EXCLUDE  | Not applicable for two categorical variables without a stratifying variable. |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (no contradictions)
+   - Fisher Exact Test: INCLUDE (no contradictions)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""family_history_with_overweight"", ""NObeyesdad""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+114,Distribution Compliance Test,"Do the values in the car price variable, measured in lakhs of currency units, exhibit characteristics consistent with a normal distribution?",Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is ""price(in lakhs)"", which is quantitative.
+
+2. **Determine the statistical task type:**
+   - The task is to test if the variable ""price(in lakhs)"" exhibits characteristics consistent with a normal distribution.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is ""Distribution Compliance Test"".
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate each method in the ""Distribution Compliance Test"" category.
+   - Since the data type of ""price(in lakhs)"" is quantitative and the task is to test for normality, we will consider methods that specifically test for normality.
+
+| Method | Decision | Reason |
+| --- | --- | --- |
+| Anderson-Darling Test | INCLUDE | Tests for normality specifically. |
+| Shapiro-Wilk Test of Normality | INCLUDE | Tests for normality specifically. |
+| Kolmogorov-Smirnov Test for Normality | INCLUDE | Tests for normality specifically. |
+| Lilliefors Test | INCLUDE | Tests for normality specifically. |
+| Kolmogorov-Smirnov Test | EXCLUDE | Tests for general distribution, not specifically for normality. |
+| Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Tests for uniform distribution, not normality. |
+| Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Tests for Gamma distribution, not normality. |
+| Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Tests for Exponential distribution, not normality. |
+
+5. **Self-check:**
+   - The methods marked INCLUDE are Anderson-Darling Test, Shapiro-Wilk Test of Normality, and Lilliefors Test. These methods are specifically designed to test for normality.
+   - The method Kolmogorov-Smirnov Test for Normality is also included as it is specifically designed for normality testing.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""price(in lakhs)""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Kolmogorov-Smirnov Test for Normality"", ""Lilliefors Test""]
+}
+```"
+30,Variance Test,Do the age and body mass index (BMI) have statistically similar dispersions?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=exclude|F-Test for Variance=exclude,,,"1. **Identify the variables involved:**
+   - The variables involved are 'age' and 'bmi'.
+
+2. **Determine the statistical task type:**
+   - The task is to compare the dispersions of two quantitative variables, 'age' and 'bmi'.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is 'Variance Test' since the task is to compare the dispersions (variances) of two quantitative variables.
+
+4. **Evaluate the candidate methods:**
+   - Mood Variance Test: INCLUDE. It is used to compare the variances of two groups.
+   - Levene Test: INCLUDE. It is used to test the equality of variances across groups.
+   - Bartlett Test: EXCLUDE. It assumes normality of the data, which is not the case here.
+   - F-Test for Variance: EXCLUDE. It also assumes normality of the data, which is not the case here.
+
+| Method             | Decision | Reason                                      |
+|--------------------|----------|---------------------------------------------|
+| Mood Variance Test | INCLUDE  | Does not assume normality of the data.      |
+| Levene Test        | INCLUDE  | Does not assume normality of the data.      |
+| Bartlett Test      | EXCLUDE  | Assumes normality of the data.              |
+| F-Test for Variance| EXCLUDE  | Assumes normality of the data.              |
+
+5. **Self-check:**
+   - Mood Variance Test: INCLUDE. It does not contradict any condition.
+   - Levene Test: INCLUDE. It does not contradict any condition.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""age"", ""bmi""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test""]
+}
+```"
+115,Distribution Compliance Test,"Can I assume that the distribution of ages at death, specifically for individuals aged between 51 and 99, follows a normal distribution for statistical procedures?",Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is ""Death Age: 51-99"", which is quantitative.
+
+2. **Determine the statistical task type:**
+   - The task is to test if the distribution of ages at death for individuals aged between 51 and 99 follows a normal distribution.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is ""Distribution Compliance Test"".
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate each method in the ""Distribution Compliance Test"" category.
+
+| Method | Decision | Reason |
+| --- | --- | --- |
+| Anderson-Darling Test | INCLUDE | Tests if a sample comes from a population with a specified distribution, suitable for normality testing. |
+| Shapiro-Wilk Test of Normality | INCLUDE | Specifically designed to test for normal distribution, suitable for small to medium sample sizes. |
+| Kolmogorov-Smirnov Test for Normality | INCLUDE | Tests if a sample comes from a population with a specified distribution, suitable for normality testing. |
+| Lilliefors Test | INCLUDE | An adaptation of the Kolmogorov-Smirnov test for normality, suitable for testing normality when parameters are estimated from the data. |
+| Kolmogorov-Smirnov Test | EXCLUDE | This test is not specific to normality and is not suitable for this task. |
+| Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | This test is for uniform distribution, not normality. |
+| Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | This test is for Gamma distribution, not normality. |
+| Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | This test is for Exponential distribution, not normality. |
+
+5. **Self-check:**
+   - After evaluating the methods, we confirm that the methods marked INCLUDE do not contradict any conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Death Age: 51-99""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Kolmogorov-Smirnov Test for Normality"", ""Lilliefors Test""]
+}
+```"
+140,Distribution Compliance Test,Does the distribution of cumulative GPAs conform to a normal distribution?,Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is ""CGPA"" (Cumulative Grade Point Average), which is quantitative.
+
+2. **Determine the statistical task type:**
+   - The task is to test whether the distribution of CGPA conforms to a normal distribution.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is ""Distribution Compliance Test"".
+
+4. **Evaluate the candidate methods:**
+   | Method | Decision | Reason |
+   | ------ | -------- | ------ |
+   | Anderson-Darling Test | INCLUDE | Suitable for testing normality of a distribution. |
+   | Shapiro-Wilk Test of Normality | INCLUDE | Suitable for testing normality of a distribution, especially for smaller sample sizes. |
+   | Kolmogorov-Smirnov Test for Normality | INCLUDE | Suitable for testing normality of a distribution. |
+   | Lilliefors Test | INCLUDE | Suitable for testing normality of a distribution, especially when the parameters are estimated from the data. |
+   | Kolmogorov-Smirnov Test | EXCLUDE | Not specifically for normality testing. |
+   | Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Not for normality testing. |
+   | Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Not for normality testing. |
+   | Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Not for normality testing. |
+
+5. **Self-check:**
+   - After reviewing the methods marked INCLUDE, we confirm that they are all appropriate for testing the normality of a distribution.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""CGPA""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Kolmogorov-Smirnov Test for Normality"", ""Lilliefors Test""]
+}
+```"
+206,Variance Test,Are the levels of variability in GRE scores comparable to those in the strength of the applicant's Statement of Purpose?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - GRE Score (quantitative)
+   - SOP (quantitative)
+
+2. **Determine the statistical task type:**
+   - The task is to compare the variability in GRE scores to the variability in SOP scores.
+
+3. **Select the appropriate method category:**
+   - Variance Test: This category is suitable for comparing the variability between two quantitative variables.
+
+4. **Evaluate the candidate methods:**
+   - Mood Variance Test: INCLUDE, as it is used to compare variances between two groups.
+   - Levene Test: INCLUDE, as it is used to compare variances between two groups.
+   - Bartlett Test: INCLUDE, as it is used to compare variances between two groups.
+   - F-Test for Variance: INCLUDE, as it is used to compare variances between two groups.
+
+| Method               | Decision | Reason                                      |
+|----------------------|----------|---------------------------------------------|
+| Mood Variance Test   | INCLUDE  | Compares variances between two groups.      |
+| Levene Test          | INCLUDE  | Compares variances between two groups.      |
+| Bartlett Test        | INCLUDE  | Compares variances between two groups.      |
+| F-Test for Variance  | INCLUDE  | Compares variances between two groups.      |
+
+5. **Self-check:**
+   - All methods marked INCLUDE are from the Variance Test category and are appropriate for comparing the variability in GRE scores to the variability in SOP scores.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""GRE Score"", ""SOP""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+14,Contingency Table Test,Is there any correlation between experiencing peer pressure related to smoking and the presence of symptoms of chest pain?,Chi-square Independence Test|Fisher Exact Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Mantel-Haenszel Test=exclude|Fisher Exact Test=include,,,"1. **Identify the variables involved:**
+   - Peer Pressure (PEER_PRESSURE)
+   - Chest Pain (CHEST PAIN)
+
+2. **Determine the statistical task type:**
+   - The task is to determine if there is any correlation between two categorical variables.
+
+3. **Select the appropriate method category:**
+   - Since both variables are categorical, we should look into methods that can handle categorical data. The most suitable category here is Contingency Table Test.
+
+4. **Evaluate the candidate methods:**
+   - Chi-square Independence Test: This test can be used to determine if there is a significant association between two categorical variables.
+   - Fisher Exact Test: This test is used for small sample sizes and is exact, but it is more computationally intensive and typically used for smaller tables.
+   - Mantel-Haenszel Test: This test is used to assess the association between two variables in the presence of a confounding variable, which is not applicable here.
+
+| Method                  | Decision | Reason                                                                 |
+|-------------------------|----------|------------------------------------------------------------------------|
+| Chi-square Independence Test | INCLUDE  | Suitable for testing the independence between two categorical variables. |
+| Fisher Exact Test       | INCLUDE  | Suitable for small sample sizes and exact testing.                       |
+| Mantel-Haenszel Test    | EXCLUDE  | Not applicable as there is no confounding variable mentioned.            |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (Suitable for testing the independence between two categorical variables.)
+   - Fisher Exact Test: INCLUDE (Suitable for small sample sizes and exact testing.)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""PEER_PRESSURE"", ""CHEST PAIN""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+132,Variance Test,Do age and BMI exhibit similar variance characteristics?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=exclude,,,"1. **Identify the variables involved:**
+   - The variables involved are 'age' and 'bmi'.
+
+2. **Determine the statistical task type:**
+   - The task is to compare the variance characteristics of 'age' and 'bmi'.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is 'Variance Test'.
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate the methods under the 'Variance Test' category.
+   - Since we are comparing the variance characteristics of two quantitative variables, we can use methods like Mood Variance Test, Levene Test, and Bartlett Test.
+
+| Method               | Decision | Reason                                                                 |
+|----------------------|----------|----------------------------------------------------------------------|
+| Mood Variance Test   | INCLUDE  | Suitable for comparing variances of two quantitative variables.       |
+| Levene Test          | INCLUDE  | Suitable for comparing variances of two quantitative variables.       |
+| Bartlett Test        | INCLUDE  | Suitable for comparing variances of two quantitative variables.       |
+| F-Test for Variance  | EXCLUDE  | Not suitable for comparing variances of non-normal distributions.     |
+
+5. **Self-check:**
+   - All methods marked INCLUDE are Mood Variance Test, Levene Test, and Bartlett Test.
+   - These methods are suitable for comparing the variances of two quantitative variables and do not contradict any conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""age"", ""bmi""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test""]
+}
+```"
+162,Distribution Compliance Test,Does the average self-reported happiness score (avg_satisfaction) exhibit consistency with a normal distribution?,Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is `avg_satisfaction`.
+
+2. **Determine the statistical task type:**
+   - The task is to determine if `avg_satisfaction` exhibits consistency with a normal distribution.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is ""Distribution Compliance Test"".
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate each method in the ""Distribution Compliance Test"" category.
+
+| Method                          | Decision | Reason                                                                 |
+|---------------------------------|----------|------------------------------------------------------------------------|
+| Anderson-Darling Test           | INCLUDE  | Tests for normality, suitable for quantitative data.                  |
+| Shapiro-Wilk Test of Normality  | INCLUDE  | Tests for normality, suitable for quantitative data.                  |
+| Kolmogorov-Smirnov Test for Normality | INCLUDE | Tests for normality, suitable for quantitative data.              |
+| Lilliefors Test                 | INCLUDE  | Tests for normality, suitable for quantitative data.                  |
+| Kolmogorov-Smirnov Test         | EXCLUDE  | General Kolmogorov-Smirnov Test, not specific to normality.           |
+| Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Tests for uniform distribution, not normality.                |
+| Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Tests for Gamma distribution, not normality.                  |
+| Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Tests for Exponential distribution, not normality.          |
+
+5. **Self-check:**
+   - The methods marked INCLUDE are Anderson-Darling Test, Shapiro-Wilk Test of Normality, and Lilliefors Test. These methods are all appropriate for testing normality of quantitative data.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""avg_satisfaction""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Lilliefors Test""]
+}
+```"
+248,Variance Test,"To what extent do the variance patterns of engine displacement (measured in cubic centimeters, cc) and maximum power output (measured in brake horsepower, bhp) exhibit parallelism?",Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - The variables involved are `engine(cc)` and `max_power(bhp)`.
+
+2. **Determine the statistical task type:**
+   - The task is to assess the parallelism of variance patterns between two quantitative variables. This implies a comparison of variances between two groups or variables.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Variance Test, as we are comparing the variances of two quantitative variables.
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate the methods under the Variance Test category.
+   | Method | Decision | Reason |
+   | --- | --- | --- |
+   | Mood Variance Test | INCLUDE | Suitable for comparing variances between two groups. |
+   | Levene Test | INCLUDE | Suitable for comparing variances between two groups. |
+   | Bartlett Test | INCLUDE | Suitable for comparing variances between two groups. |
+   | F-Test for Variance | INCLUDE | Suitable for comparing variances between two groups. |
+
+5. **Self-check:**
+   - All methods listed in the table are suitable for comparing the variances of two quantitative variables. No contradictions are found.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""engine(cc)"", ""max_power(bhp)""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+51,Correlation Analysis,Do changes in base Health Points (HP) correspond to similar changes in base Special Defense (Sp_Def)?,Pearson Correlation Coefficient|Spearman Correlation Coefficient|Kendall Correlation Coefficient,Pearson Correlation Coefficient|Spearman Correlation Coefficient|Kendall Correlation Coefficient,fully_labeled,Pearson Correlation Coefficient=include|Spearman Correlation Coefficient=include|Kendall Correlation Coefficient=include|Partial Correlation Coefficient=exclude,,,"1. **Identify the variables involved:**
+   - The variables involved are 'HP' and 'Sp_Def'.
+
+2. **Determine the statistical task type:**
+   - The question is asking about the relationship between two quantitative variables, 'HP' and 'Sp_Def'. This suggests a correlation analysis.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Correlation Analysis.
+
+4. **Evaluate the candidate methods:**
+   - Pearson Correlation Coefficient: INCLUDE. It measures the linear relationship between two quantitative variables.
+   - Spearman Correlation Coefficient: INCLUDE. It measures the monotonic relationship between two quantitative variables, which is useful if the relationship is not strictly linear.
+   - Kendall Correlation Coefficient: INCLUDE. It measures the ordinal association between two quantitative variables, which is useful for detecting a trend in the data.
+   - Partial Correlation Coefficient: EXCLUDE. It measures the relationship between two variables while controlling for the effects of one or more additional variables, which is not relevant here as no additional variables are mentioned.
+
+| Method                  | Decision | Reason                                                                 |
+|-------------------------|----------|------------------------------------------------------------------------|
+| Pearson Correlation Coefficient | INCLUDE | Measures the linear relationship between two quantitative variables. |
+| Spearman Correlation Coefficient | INCLUDE | Measures the monotonic relationship between two quantitative variables. |
+| Kendall Correlation Coefficient  | INCLUDE | Measures the ordinal association between two quantitative variables. |
+| Partial Correlation Coefficient  | EXCLUDE | Measures the relationship between two variables while controlling for additional variables, which is not relevant here. |
+
+5. **Self-check:**
+   - The methods marked INCLUDE are Pearson Correlation Coefficient, Spearman Correlation Coefficient, and Kendall Correlation Coefficient. None of these methods contradict any condition identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""HP"", ""Sp_Def""],
+  ""methods"": [""Pearson Correlation Coefficient"", ""Spearman Correlation Coefficient"", ""Kendall Correlation Coefficient""]
+}
+```"
+324,Correlation Analysis,How strong is the relationship between the number of Christmas trees purchased and their average sale price?,Kendall Correlation Coefficient,Pearson Correlation Coefficient|Spearman Correlation Coefficient|Kendall Correlation Coefficient,fully_labeled,Pearson Correlation Coefficient=include|Spearman Correlation Coefficient=include|Kendall Correlation Coefficient=include|Partial Correlation Coefficient=exclude,,,"1. **Identify the variables involved:**
+   - Number of trees sold (quantitative)
+   - Average Tree Price (quantitative)
+
+2. **Determine the statistical task type:**
+   - The task is to measure the strength of the relationship between two quantitative variables.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Correlation Analysis.
+
+4. **Evaluate the candidate methods:**
+   | Method                       | Decision | Reason                                                                 |
+   |------------------------------|----------|------------------------------------------------------------------------|
+   | Pearson Correlation Coefficient | INCLUDE  | Suitable for measuring the linear relationship between two quantitative variables. |
+   | Spearman Correlation Coefficient | INCLUDE  | Suitable for measuring the monotonic relationship between two quantitative variables. |
+   | Kendall Correlation Coefficient | INCLUDE  | Suitable for measuring the ordinal relationship between two quantitative variables. |
+   | Partial Correlation Coefficient | EXCLUDE  | Not necessary as there are no other variables to control for in this analysis. |
+
+5. **Self-check:**
+   - Pearson Correlation Coefficient: INCLUDE (Measures linear relationship)
+   - Spearman Correlation Coefficient: INCLUDE (Measures monotonic relationship)
+   - Kendall Correlation Coefficient: INCLUDE (Measures ordinal relationship)
+   - Partial Correlation Coefficient: EXCLUDE (Not needed for this analysis)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Number of trees sold"", ""Average Tree Price""],
+  ""methods"": [""Pearson Correlation Coefficient"", ""Spearman Correlation Coefficient"", ""Kendall Correlation Coefficient""]
+}
+```"
+118,Distribution Compliance Test,What is the likelihood that the price at which the produce is sold at the farm follows a normal distribution?,Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is `farmprice`, which is quantitative and does not follow a normal distribution.
+
+2. **Determine the statistical task type:**
+   - The task is to test whether the distribution of `farmprice` follows a normal distribution.
+
+3. **Select the appropriate method category:**
+   - The appropriate category is ""Distribution Compliance Test"".
+
+4. **Evaluate the candidate methods:**
+   | Method | Decision | Reason |
+   | --- | --- | --- |
+   | Anderson-Darling Test | INCLUDE | Suitable for testing normality of a distribution. |
+   | Shapiro-Wilk Test of Normality | INCLUDE | Suitable for testing normality of a distribution, especially for smaller sample sizes. |
+   | Kolmogorov-Smirnov Test for Normality | INCLUDE | Suitable for testing normality of a distribution. |
+   | Lilliefors Test | INCLUDE | Suitable for testing normality of a distribution, especially when the parameters are estimated from the data. |
+   | Kolmogorov-Smirnov Test | EXCLUDE | Not specifically for normality testing. |
+   | Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Not for normality testing. |
+   | Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Not for normality testing. |
+   | Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Not for normality testing. |
+
+5. **Self-check:**
+   - After reviewing the methods, the ones marked as INCLUDE do not contradict any conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""farmprice""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Kolmogorov-Smirnov Test for Normality"", ""Lilliefors Test""]
+}
+```"
+244,Contingency Table Test,Is there a discernible association pattern between the type of chest pain and the slope of the peak exercise ST segment?,Chi-square Independence Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=include|Mantel-Haenszel Test=exclude,,,"1. **Identify the variables involved:**
+   - ChestPainType (categorical)
+   - ST_Slope (categorical)
+
+2. **Determine the statistical task type:**
+   - The task is to find an association pattern between two categorical variables.
+
+3. **Select the appropriate method category:**
+   - Contingency Table Test
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Chi-square Independence Test | INCLUDE | Suitable for testing independence between two categorical variables. |
+   | Fisher Exact Test       | INCLUDE  | Suitable for small sample sizes or when expected cell counts are low.   |
+   | Mantel-Haenszel Test    | EXCLUDE  | Used for stratified analysis, not directly applicable here.            |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (no contradictions)
+   - Fisher Exact Test: INCLUDE (no contradictions)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""ChestPainType"", ""ST_Slope""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+280,Distribution Compliance Test,"Does the budget allocated for TV advertising ($), follow a distribution that is suitable for methods assuming normality?",Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is the ""TV Ad Budget ($)"".
+
+2. **Determine the statistical task type:**
+   - The task is to determine if the distribution of the ""TV Ad Budget ($)"" is suitable for methods assuming normality.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is ""Distribution Compliance Test"".
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate each method in the ""Distribution Compliance Test"" category to see if it is suitable for the given task.
+
+| Method | Decision | Reason |
+| --- | --- | --- |
+| Anderson-Darling Test | INCLUDE | Tests the goodness of fit for a distribution, suitable for checking normality. |
+| Shapiro-Wilk Test of Normality | INCLUDE | Specifically designed to test for normality. |
+| Kolmogorov-Smirnov Test for Normality | INCLUDE | Tests the goodness of fit for a normal distribution. |
+| Lilliefors Test | INCLUDE | An adaptation of the Kolmogorov-Smirnov test for normality, suitable for checking normality. |
+| Kolmogorov-Smirnov Test | EXCLUDE | General test for any distribution, not specific to normality. |
+| Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Tests for uniform distribution, not normality. |
+| Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Tests for Gamma distribution, not normality. |
+| Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Tests for Exponential distribution, not normality. |
+
+5. **Self-check:**
+   - After evaluating the methods, we confirm that the methods marked INCLUDE do not contradict any conditions identified in Step 4. We remove any method that does not fit the criteria.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""TV Ad Budget ($)""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Kolmogorov-Smirnov Test for Normality"", ""Lilliefors Test""]
+}
+```"
+264,Contingency Table Test,Is there a relationship between hypertension and smoking status?,Chi-square Independence Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=include|Mantel-Haenszel Test=exclude,,,"1. **Identify the variables involved:**
+   - Hypertension (categorical)
+   - Smoking Status (categorical)
+
+2. **Determine the statistical task type:**
+   - The task is to determine if there is a relationship between two categorical variables.
+
+3. **Select the appropriate method category:**
+   - Contingency Table Test
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Chi-square Independence Test | INCLUDE | Suitable for testing the independence between two categorical variables. |
+   | Fisher Exact Test       | INCLUDE  | Suitable for small sample sizes or when expected cell counts are low.     |
+   | Mantel-Haenszel Test    | EXCLUDE  | Used for stratified analysis, not directly applicable here.              |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (no contradictions)
+   - Fisher Exact Test: INCLUDE (no contradictions)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""hypertension"", ""smoking_status""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+181,Distribution Compliance Test,Do the annual crop production in Nigeria and India follow similar distribution curves?,Kolmogorov-Smirnov Test,Kolmogorov-Smirnov Test,fully_labeled,Kolmogorov-Smirnov Test=include|Anderson-Darling Test=exclude|Shapiro-Wilk Test of Normality=exclude|Lilliefors Test=exclude|Kolmogorov-Smirnov Test for Normality=exclude|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude|Chi-square Independence Test=exclude|Fisher Exact Test=exclude|Mantel-Haenszel Test=exclude|Mean=exclude|Median=exclude|Mode=exclude|Range=exclude|Quartile=exclude|Standard Deviation=exclude|Skewness=exclude|Kurtosis=exclude|Mood Variance Test=exclude|Levene Test=exclude|Bartlett Test=exclude|F-Test for Variance=exclude|Pearson Correlation Coefficient=exclude|Spearman Correlation Coefficient=exclude|Kendall Correlation Coefficient=exclude|Partial Correlation Coefficient=exclude,,,"1. **Identify the variables involved:**
+   - Nigeria (quantitative)
+   - India (quantitative)
+
+2. **Determine the statistical task type:**
+   - The task is to compare the distribution curves of annual crop production in Nigeria and India.
+
+3. **Select the appropriate method category:**
+   - Distribution Compliance Test: This category is not directly applicable as we are comparing two distributions, not testing one against a theoretical distribution.
+   - Correlation Analysis: This is not suitable as we are not looking for a relationship between two variables but rather comparing their distributions.
+   - Contingency Table Test: This is not suitable as we are dealing with quantitative data, not categorical data.
+   - Descriptive Statistics: This is not suitable as we are not just describing the data but comparing the distributions.
+   - Variance Test: This is not suitable as we are not comparing variances but the overall distributions.
+
+   The most appropriate category here is the **Distribution Compliance Test** but with a twist, as we are comparing two empirical distributions rather than testing against a theoretical distribution. The closest method in the provided list would be the **Kolmogorov-Smirnov Test** for comparing two samples.
+
+4. **Evaluate the candidate methods:**
+   | Method | Decision | Reason |
+   | ------ | -------- | ------ |
+   | Kolmogorov-Smirnov Test | INCLUDE | Suitable for comparing two empirical distributions. |
+   | Anderson-Darling Test | EXCLUDE | Not suitable for comparing two empirical distributions directly. |
+   | Shapiro-Wilk Test of Normality | EXCLUDE | Tests for normality, not for comparing two distributions. |
+   | Lilliefors Test | EXCLUDE | Tests for normality, not for comparing two distributions. |
+   | Kolmogorov-Smirnov Test for Normality | EXCLUDE | Tests for normality, not for comparing two distributions. |
+   | Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Tests for uniform distribution, not for comparing two distributions. |
+   | Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Tests for Gamma distribution, not for comparing two distributions. |
+   | Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Tests for Exponential distribution, not for comparing two distributions. |
+   | Chi-square Independence Test | EXCLUDE | For categorical data, not quantitative. |
+   | Fisher Exact Test | EXCLUDE | For categorical data, not quantitative. |
+   | Mantel-Haenszel Test | EXCLUDE | For categorical data, not quantitative. |
+   | Mean | EXCLUDE | Descriptive statistic, not for comparing distributions. |
+   | Median | EXCLUDE | Descriptive statistic, not for comparing distributions. |
+   | Mode | EXCLUDE | Descriptive statistic, not for comparing distributions. |
+   | Range | EXCLUDE | Descriptive statistic, not for comparing distributions. |
+   | Quartile | EXCLUDE | Descriptive statistic, not for comparing distributions. |
+   | Standard Deviation | EXCLUDE | Descriptive statistic, not for comparing distributions. |
+   | Skewness | EXCLUDE | Descriptive statistic, not for comparing distributions. |
+   | Kurtosis | EXCLUDE | Descriptive statistic, not for comparing distributions. |
+   | Mood Variance Test | EXCLUDE | For comparing variances, not distributions. |
+   | Levene Test | EXCLUDE | For comparing variances, not distributions. |
+   | Bartlett Test | EXCLUDE | For comparing variances, not distributions. |
+   | F-Test for Variance | EXCLUDE | For comparing variances, not distributions. |
+   | Pearson Correlation Coefficient | EXCLUDE | For measuring linear relationship, not for comparing distributions. |
+   | Spearman Correlation Coefficient | EXCLUDE | For measuring monotonic relationship, not for comparing distributions. |
+   | Kendall Correlation Coefficient | EXCLUDE | For measuring ordinal association, not for comparing distributions. |
+   | Partial Correlation Coefficient | EXCLUDE | For measuring partial correlation, not for comparing distributions. |
+
+5. **Self-check:**
+   - The only method marked INCLUDE is the Kolmogorov-Smirnov Test, which is suitable for comparing two empirical distributions.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Nigeria"", ""India""],
+  ""methods"": [""Kolmogorov-Smirnov Test""]
+}
+```"
+273,Variance Test,Do the average glucose level and body mass index exhibit similar patterns of variance to some extent?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=exclude|F-Test for Variance=exclude,,,"1. **Identify the variables involved:**
+   - The variables involved are `avg_glucose_level` and `bmi`.
+
+2. **Determine the statistical task type:**
+   - The task is to compare the variances of two quantitative variables (`avg_glucose_level` and `bmi`).
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Variance Test.
+
+4. **Evaluate the candidate methods:**
+   - The candidate methods from the Variance Test category are Mood Variance Test, Levene Test, Bartlett Test, and F-Test for Variance.
+   - Since the data is not specified to be normally distributed, non-parametric tests are preferred.
+   - Mood Variance Test and Levene Test are suitable for non-normal data.
+
+| Method               | Decision | Reason                                                                 |
+|----------------------|----------|------------------------------------------------------------------------|
+| Mood Variance Test   | INCLUDE  | Suitable for non-normal data.                                          |
+| Levene Test          | INCLUDE  | Suitable for non-normal data.                                          |
+| Bartlett Test        | EXCLUDE  | Assumes normality of data.                                             |
+| F-Test for Variance  | EXCLUDE  | Assumes normality of data.                                             |
+
+5. **Self-check:**
+   - The methods marked INCLUDE are Mood Variance Test and Levene Test.
+   - Both methods do not contradict the condition of non-normal data.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""avg_glucose_level"", ""bmi""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test""]
+}
+```"
+155,Variance Test,Is there a statistically significant difference in the variances of the property's square footage and the number of bathrooms?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=exclude|F-Test for Variance=exclude,,,"1. **Identify the variables involved:**
+   - SquareFeet (quantitative)
+   - Bathrooms (quantitative)
+
+2. **Determine the statistical task type:**
+   - The task is to determine if there is a statistically significant difference in the variances of two quantitative variables: SquareFeet and Bathrooms.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Variance Test.
+
+4. **Evaluate the candidate methods:**
+   - Mood Variance Test: INCLUDE, because it is used to compare variances of two samples.
+   - Levene Test: INCLUDE, because it is used to compare variances of two samples.
+   - Bartlett Test: EXCLUDE, because it assumes normality of the data, and the data is not normal.
+   - F-Test for Variance: EXCLUDE, because it also assumes normality of the data, and the data is not normal.
+
+| Method             | Decision | Reason                                                                 |
+|--------------------|----------|------------------------------------------------------------------------|
+| Mood Variance Test | INCLUDE  | Compares variances of two samples without assuming normality.           |
+| Levene Test        | INCLUDE  | Compares variances of two samples without assuming normality.           |
+| Bartlett Test      | EXCLUDE  | Assumes normality of the data, which is not the case here.              |
+| F-Test for Variance| EXCLUDE  | Assumes normality of the data, which is not the case here.              |
+
+5. **Self-check:**
+   - Mood Variance Test: INCLUDE (no contradictions)
+   - Levene Test: INCLUDE (no contradictions)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""SquareFeet"", ""Bathrooms""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test""]
+}
+```"
+363,Variance Test,Do the GRE and TOEFL scores exhibit similar levels of data dispersion?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - GRE Score (quantitative)
+   - TOEFL Score (quantitative)
+
+2. **Determine the statistical task type:**
+   - The task is to compare the dispersion of two quantitative variables (GRE Score and TOEFL Score).
+
+3. **Select the appropriate method category:**
+   - The task involves comparing the dispersion of two quantitative variables. The most relevant category from the provided list is Variance Test.
+
+4. **Evaluate the candidate methods:**
+   - Mood Variance Test: INCLUDE, as it is used to compare variances between two groups.
+   - Levene Test: INCLUDE, as it is used to compare variances between two groups.
+   - Bartlett Test: INCLUDE, as it is used to compare variances between two groups.
+   - F-Test for Variance: INCLUDE, as it is used to compare variances between two groups.
+
+| Method             | Decision | Reason                                                                 |
+|--------------------|----------|------------------------------------------------------------------------|
+| Mood Variance Test | INCLUDE  | Used to compare variances between two groups.                          |
+| Levene Test        | INCLUDE  | Used to compare variances between two groups.                          |
+| Bartlett Test      | INCLUDE  | Used to compare variances between two groups.                          |
+| F-Test for Variance| INCLUDE  | Used to compare variances between two groups.                          |
+
+5. **Self-check:**
+   - All methods marked INCLUDE are from the Variance Test category and are appropriate for comparing the dispersion of two quantitative variables.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""GRE Score"", ""TOEFL Score""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+271,Distribution Compliance Test,What is the likelihood that annual crop production in Japan follows a normal distribution?,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is the annual crop production in Japan, which is a quantitative variable.
+
+2. **Determine the statistical task type:**
+   - The task is to determine if the annual crop production in Japan follows a normal distribution. This falls under the category of Distribution Compliance Test.
+
+3. **Select the appropriate method category:**
+   - The appropriate category is Distribution Compliance Test.
+
+4. **Evaluate the candidate methods:**
+   | Method | Decision | Reason |
+   | ------ | -------- | ------ |
+   | Anderson-Darling Test | INCLUDE | Suitable for testing normality of a distribution. |
+   | Shapiro-Wilk Test of Normality | INCLUDE | Suitable for testing normality of a distribution, especially for small sample sizes. |
+   | Kolmogorov-Smirnov Test for Normality | INCLUDE | Suitable for testing normality of a distribution. |
+   | Lilliefors Test | INCLUDE | Suitable for testing normality of a distribution, especially when the parameters are estimated from the data. |
+   | Kolmogorov-Smirnov Test | EXCLUDE | Not specifically for normality testing. |
+   | Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Not for normality testing. |
+   | Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Not for normality testing. |
+   | Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Not for normality testing. |
+
+5. **Self-check:**
+   - After evaluating the methods, the ones marked as INCLUDE are Anderson-Darling Test, Shapiro-Wilk Test of Normality, and Lilliefors Test. These methods are all appropriate for testing the normality of a distribution.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Japan""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Lilliefors Test""]
+}
+```"
+28,Variance Test,Is there homogeneity of variance between the total kilometers driven by the car and the maximum power output of the car's engine in brake horsepower (bhp)?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - The variables involved are 'kms_driven' (total kilometers driven by the car) and 'max_power(bhp)' (maximum power output of the car's engine in brake horsepower).
+
+2. **Determine the statistical task type:**
+   - The task is to check for homogeneity of variance between two quantitative variables. This falls under the category of Variance Test.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Variance Test.
+
+4. **Evaluate the candidate methods:**
+   | Method               | Decision | Reason                                                                 |
+   |----------------------|----------|------------------------------------------------------------------------|
+   | Mood Variance Test   | INCLUDE  | Suitable for comparing variances between two quantitative variables.    |
+   | Levene Test          | INCLUDE  | Suitable for comparing variances between two quantitative variables.    |
+   | Bartlett Test        | INCLUDE  | Suitable for comparing variances between two quantitative variables.    |
+   | F-Test for Variance  | INCLUDE  | Suitable for comparing variances between two quantitative variables.    |
+
+5. **Self-check:**
+   - All methods marked INCLUDE are from the Variance Test category and are suitable for comparing variances between two quantitative variables. No contradictions are found.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""kms_driven"", ""max_power(bhp)""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+41,Variance Test,Are the levels of data spread similar for studytime and health?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=exclude|F-Test for Variance=exclude,,,"1. **Identify the variables involved:**
+   - The variables involved are 'studytime' and 'health', both of which are quantitative.
+
+2. **Determine the statistical task type:**
+   - The task is to compare the spread of data between two quantitative variables, 'studytime' and 'health'. This involves assessing whether the variances of these two variables are similar.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category for comparing the spread of data between two quantitative variables is the Variance Test.
+
+4. **Evaluate the candidate methods:**
+   - The candidate methods from the Variance Test category are Mood Variance Test, Levene Test, Bartlett Test, and F-Test for Variance.
+   - Since the data is not specified to be normally distributed, non-parametric tests like Mood Variance Test and Levene Test are more appropriate.
+   - Bartlett Test assumes normality, which is not the case here.
+   - F-Test for Variance also assumes normality, which is not the case here.
+
+| Method               | Decision | Reason                                                                 |
+|----------------------|----------|------------------------------------------------------------------------|
+| Mood Variance Test   | INCLUDE  | Non-parametric, does not assume normality.                             |
+| Levene Test          | INCLUDE  | Non-parametric, does not assume normality.                             |
+| Bartlett Test        | EXCLUDE  | Assumes normality, which is not the case here.                         |
+| F-Test for Variance  | EXCLUDE  | Assumes normality, which is not the case here.                         |
+
+5. **Self-check:**
+   - The methods marked INCLUDE are Mood Variance Test and Levene Test.
+   - Both methods do not contradict any condition identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""studytime"", ""health""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test""]
+}
+```"
+3,Distribution Compliance Test,Is there evidence to suggest that the variable Age does not follow a normal distribution?,Anderson-Darling Test|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,Anderson-Darling Test|Shapiro-Wilk Test of Normality|Kolmogorov-Smirnov Test for Normality|Lilliefors Test,fully_labeled,Anderson-Darling Test=include|Shapiro-Wilk Test of Normality=include|Kolmogorov-Smirnov Test for Normality=include|Kolmogorov-Smirnov Test=exclude|Lilliefors Test=include|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The variable of interest is ""Age"".
+
+2. **Determine the statistical task type:**
+   - The task is to test whether the variable ""Age"" follows a normal distribution.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is ""Distribution Compliance Test"".
+
+4. **Evaluate the candidate methods:**
+   | Method | Decision | Reason |
+   | ------ | -------- | ------ |
+   | Anderson-Darling Test | INCLUDE | Suitable for testing normality of quantitative data. |
+   | Shapiro-Wilk Test of Normality | INCLUDE | Suitable for testing normality of quantitative data. |
+   | Kolmogorov-Smirnov Test for Normality | INCLUDE | Suitable for testing normality of quantitative data. |
+   | Lilliefors Test | INCLUDE | Suitable for testing normality of quantitative data, especially when there are parameters estimated from the data. |
+   | Kolmogorov-Smirnov Test | EXCLUDE | Not specifically for normality testing. |
+   | Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | Not for normality testing. |
+   | Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | Not for normality testing. |
+   | Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | Not for normality testing. |
+
+5. **Self-check:**
+   - After reviewing the methods, the ones marked as INCLUDE do not contradict any conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Age""],
+  ""methods"": [""Anderson-Darling Test"", ""Shapiro-Wilk Test of Normality"", ""Kolmogorov-Smirnov Test for Normality"", ""Lilliefors Test""]
+}
+```"
+22,Variance Test,Is there a significant difference in the variances of annual crop production between the Philippines and Bangladesh?,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - The variables involved are the annual crop production data for the Philippines and Bangladesh.
+
+2. **Determine the statistical task type:**
+   - The task is to determine if there is a significant difference in the variances of annual crop production between the Philippines and Bangladesh. This falls under the category of Variance Test.
+
+3. **Select the appropriate method category:**
+   - The appropriate method category is Variance Test.
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Mood Variance Test      | INCLUDE  | Suitable for comparing variances between two groups.                    |
+   | Levene Test             | INCLUDE  | Suitable for comparing variances between two groups.                    |
+   | Bartlett Test           | INCLUDE  | Suitable for comparing variances between two groups.                    |
+   | F-Test for Variance     | INCLUDE  | Suitable for comparing variances between two groups.                    |
+
+5. **Self-check:**
+   - All methods listed are suitable for comparing variances between two groups and do not contradict any conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Philippines"", ""Bangladesh""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
+188,Contingency Table Test,Is there evidence in the data to indicate a relationship between the experience of peer pressure related to smoking and the presence of chronic disease?,Chi-square Independence Test|Fisher Exact Test,Chi-square Independence Test|Fisher Exact Test,fully_labeled,Chi-square Independence Test=include|Fisher Exact Test=include|Mantel-Haenszel Test=exclude,,,"1. **Identify the variables involved:**
+   - Peer Pressure (PEER_PRESSURE)
+   - Chronic Disease (CHRONIC DISEASE)
+
+2. **Determine the statistical task type:**
+   - The task is to determine if there is a relationship between two categorical variables.
+
+3. **Select the appropriate method category:**
+   - Contingency Table Test
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Chi-square Independence Test | INCLUDE | Suitable for testing independence between two categorical variables. |
+   | Fisher Exact Test       | INCLUDE  | Suitable for small sample sizes or when expected cell counts are low.   |
+   | Mantel-Haenszel Test    | EXCLUDE  | Used for stratified analysis, not directly applicable here.            |
+
+5. **Self-check:**
+   - Chi-square Independence Test: INCLUDE (no contradictions)
+   - Fisher Exact Test: INCLUDE (no contradictions)
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""PEER_PRESSURE"", ""CHRONIC DISEASE""],
+  ""methods"": [""Chi-square Independence Test"", ""Fisher Exact Test""]
+}
+```"
+79,Distribution Compliance Test,Do the distributions of the number of teenagers in the customer's household and the number of purchases made directly in stores exhibit a close alignment?,Kolmogorov-Smirnov Test,Kolmogorov-Smirnov Test,fully_labeled,Anderson-Darling Test=exclude|Shapiro-Wilk Test of Normality=exclude|Kolmogorov-Smirnov Test for Normality=exclude|Kolmogorov-Smirnov Test=include|Lilliefors Test=exclude|Kolmogorov-Smirnov Test for Uniform distribution=exclude|Kolmogorov-Smirnov Test for Gamma distribution=exclude|Kolmogorov-Smirnov Test for Exponential distribution=exclude,,,"1. **Identify the variables involved:**
+   - The number of teenagers in the customer's household (Teenhome)
+   - The number of purchases made directly in stores (NumStorePurchases)
+
+2. **Determine the statistical task type:**
+   - The question asks about the alignment of the distributions of two quantitative variables. This suggests a comparison of the distributions of two variables.
+
+3. **Select the appropriate method category:**
+   - The most relevant category here is the Distribution Compliance Test, as we are comparing the distributions of two quantitative variables.
+
+4. **Evaluate the candidate methods:**
+   - We will evaluate the methods under the Distribution Compliance Test category.
+
+| Method | Decision | Reason |
+| --- | --- | --- |
+| Anderson-Darling Test | EXCLUDE | This test is used to test for goodness of fit to a distribution, not to compare two distributions directly. |
+| Shapiro-Wilk Test of Normality | EXCLUDE | This test is used to test for normality of a single variable, not to compare two distributions. |
+| Kolmogorov-Smirnov Test for Normality | EXCLUDE | This test is used to test for normality of a single variable, not to compare two distributions. |
+| Lilliefors Test | EXCLUDE | This test is used to test for normality of a single variable, not to compare two distributions. |
+| Kolmogorov-Smirnov Test | INCLUDE | This test can be used to compare the distributions of two samples. |
+| Kolmogorov-Smirnov Test for Uniform distribution | EXCLUDE | This test is used to test for uniform distribution of a single variable, not to compare two distributions. |
+| Kolmogorov-Smirnov Test for Gamma distribution | EXCLUDE | This test is used to test for Gamma distribution of a single variable, not to compare two distributions. |
+| Kolmogorov-Smirnov Test for Exponential distribution | EXCLUDE | This test is used to test for Exponential distribution of a single variable, not to compare two distributions. |
+
+5. **Self-check:**
+   - The only method marked INCLUDE is the Kolmogorov-Smirnov Test, which is appropriate for comparing the distributions of two samples.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Teenhome"", ""NumStorePurchases""],
+  ""methods"": [""Kolmogorov-Smirnov Test""]
+}
+```"
+207,Variance Test,Do Heart Rate and BMI exhibit similar levels of variability in the data?,Mood Variance Test|Levene Test,Mood Variance Test|Levene Test|Bartlett Test|F-Test for Variance,fully_labeled,Mood Variance Test=include|Levene Test=include|Bartlett Test=include|F-Test for Variance=include,,,"1. **Identify the variables involved:**
+   - Heart Rate (quantitative)
+   - BMI (quantitative)
+
+2. **Determine the statistical task type:**
+   - The task is to compare the variability of two quantitative variables (Heart Rate and BMI).
+
+3. **Select the appropriate method category:**
+   - Variance Test: This category is suitable for comparing the variability of two quantitative variables.
+
+4. **Evaluate the candidate methods:**
+   | Method                  | Decision | Reason                                                                 |
+   |-------------------------|----------|------------------------------------------------------------------------|
+   | Mood Variance Test      | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+   | Levene Test             | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+   | Bartlett Test           | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+   | F-Test for Variance      | INCLUDE  | Suitable for comparing variances of two quantitative variables.         |
+
+5. **Self-check:**
+   - All methods listed are suitable for comparing the variability of two quantitative variables and do not contradict any conditions identified in Step 4.
+
+6. **Final Answer (JSON):**
+```json
+{
+  ""columns"": [""Heart Rate"", ""BMI""],
+  ""methods"": [""Mood Variance Test"", ""Levene Test"", ""Bartlett Test"", ""F-Test for Variance""]
+}
+```"
